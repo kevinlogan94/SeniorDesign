@@ -1,14 +1,28 @@
-<?php
-include 'databaselogin.php';
+<head>
+ <title>Register Charity/Event/Program</title>
+  
+ <!--REQUIRED FOR HEADER-->
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+ <script>$(function(){
+ $("#header").load("header.html"); });
+ </script>
 
-$db_handle = mysql_connect($server, $db_username, $db_password);
-if (!$db_handle) {
+ <?php
+ include 'databaselogin.php';
+
+ $db_handle = mysql_connect($server, $db_username, $db_password);
+ if (!$db_handle) {
     die(mysql_error());
-}
-echo nl2br("Connected successfully\n");
-$db_found = mysql_select_db($database, $db_handle);
-$data = mysql_query("SELECT * FROM Tag");
-?>
+ }
+ echo nl2br("Connected successfully\n");
+ $db_found = mysql_select_db($database, $db_handle);
+ $data = mysql_query("SELECT * FROM Tag");
+ ?>
+
+</head>
+<body>
+ <!--REQUIRED FOR HEADER-->
+ <div id="header"></div>
 
 <form action="processcharity.php" method="post">
   <fieldset>
@@ -47,3 +61,4 @@ while($row = mysql_fetch_assoc($data))
     <input type="submit" value="Submit">
   </fieldset>
 </form>
+</body>

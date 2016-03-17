@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!--set the tab name to Help Finder-->
+  <title>Help Finder</title>
+  <style>/*CSS*/
+ul {/*Set up the main header*/
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #53d563; /*green*/
+    font-size:20px;	
+}
+
+li {/*Allow everything on the header to be on the same line*/
+    float: left;
+}
+
+li a, .dropbtn { /*Set up the text*/
+    display: inline-block;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    text-decoration: none;
+}
+
+li a:hover {
+    /*background-color: #306cf2; /*pink*/
+}
+/*If you're mouse hovers over For Nonprofts it highlights pink*/
+.dropbtn:hover, .dropdown:hover {
+  background-color: #ff5882; /*pink*/
+  border-radius: 10px;
+}
+
+li.dropdown { /*Set up the dropdown button for nonprofits*/
+    float:right;
+    border: solid 1px;
+    border-radius: 10px;
+    border-color: white;
+    margin: 12px;
+    font-size: 70%;
+}
+
+
+.dropdown-content { /*Set up the dropdown display*/
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 105px;
+    box-shadow: #ebebeb;
+}
+
+.dropdown-content a { /*Set up the text for the dropdown display*/
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/*Highlight the dropdown content gray*/
+.dropdown-content a:hover {background-color: #ebebeb; /*gray*/}
+
+/*Have the dropdown content be displayed as a block*/
+.show {
+  display:block;
+}
+</style>
+
+</head>
+<body>
+<!--HTML setup-->
+<ul>
+  <li><a class="active" href="index.php">Help<br>Finder.us</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">For Nonprofits</a>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </li>
+</ul>
+
+<script>
+//Javascript
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var d = 0; d < dropdowns.length; d++) {
+      var openDropdown = dropdowns[d];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
+

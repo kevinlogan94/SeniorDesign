@@ -1,4 +1,19 @@
-<form action="register.php" method="post">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  
+  <!--REQUIRED FOR HEADER-->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>$(function(){
+  $("#header").load("header.html"); });
+   </script>
+</head>
+<body>
+ <!--REQUIRED FOR HEADER-->
+ <div id="header"></div>
+
+ <form action="register.php" method="post">
   <fieldset align="center">
     <legend>Register</legend>
     Username<br>
@@ -9,4 +24,6 @@
     <input type="text" name="email"><br><br>
     <input type="submit" value="Submit">
   </fieldset>
-</form>
+ </form>
+</body>
+</html>

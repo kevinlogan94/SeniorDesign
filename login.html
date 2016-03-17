@@ -2,8 +2,19 @@
 <html>
 <head>
   <title>Login</title>
+
+  <!--REQUIRED FOR HEADER-->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>$(function(){
+  $("#header").load("header.html"); });
+   </script>
 </head>
 <body>
+
+<!--REQUIRED FOR HEADER-->
+<div id="header"></div>
+
+<!--Set up form for login information-->
 <form action="login.php" method="post">
   <fieldset align="center">
     <legend>Login information</legend>
@@ -12,6 +23,8 @@
     Password<br>
     <input type="text" name="password"><br><br>
     <input type="submit" value="Submit"><br><br>
+
+    <!--Send user to password recovery page if they forgot password-->
     <a href= "passrecover.html">I forgot my password</a>
   </fieldset>
 </form>
