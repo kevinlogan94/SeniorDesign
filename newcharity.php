@@ -50,13 +50,9 @@
     Description:<br>
     <textarea name="description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 
-<?php
-while($row = mysql_fetch_assoc($data))
-{
-   echo "<input type=\"checkbox\" name=\"".$row['tag_name']."\" 
-          value=\"".$row['tag_name']."\">".$row['tag_string']."<br>";
-}
-?>
+    <?php include 'checks.php';?>
+
+
     <br>
     <input type="submit" value="Submit">
   </fieldset>
