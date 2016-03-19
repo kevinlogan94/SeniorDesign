@@ -29,7 +29,7 @@
       <option value="50">50 miles</option>
     </select><br>
 
-    <?php include 'checks.php';?>
+    <?php include 'listtags.php';?>
     <input type="submit" value="Submit"><br><br>
   </fieldset>
 </form>
