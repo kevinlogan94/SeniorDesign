@@ -17,5 +17,7 @@
 <!-- List User's name -->
 <!-- List charities according to owner -->
 
+<p><a href="newcharity.php">Create new event</a></p>
+
 </body>
 </html>
