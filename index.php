@@ -15,7 +15,7 @@
 <div id="header"></div>
 
 <!--Set up form for search results-->
-<form action="landingpage.php" method="post">
+<form action="results.php" method="post">
   <fieldset align="center">
     <legend>Enter Info</legend>
     ZIP Code<br>

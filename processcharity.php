@@ -11,6 +11,8 @@ $phone_country = $_POST['phone_country'];
 $phone_area = $_POST['phone_area'];
 $phone_main = $_POST['phone_main'];
 $description = $_POST['description'];
+$lat = 0;
+$lon = 0;
 
 echo nl2br("name = $name \n type = $type \n zip = $zip\n");
 
@@ -27,12 +29,18 @@ while($row = mysql_fetch_assoc($data))
    echo nl2br("\n");
 }
 if ($db_found) {
-    $result = mysql_query("INSERT INTO Charities 
+   $data = mysql_query("SELECT * FROM zips WHERE zip_code=$zip");
+   if($row = mysql_fetch_assoc($data)) {
+       $lat = $row['lat'];
+       $lon = $row['lon'];
+   }
+   $result = mysql_query("INSERT INTO Charities 
 			   (charity_type, charity_name, street_address, city_name, state_abrev, 
-                           zip_code, phone_country, phone_area, phone_main, charity_description, charity_owner)
+                           zip_code, phone_country, phone_area, phone_main, charity_description,
+                           charity_owner, lat, lon)
 			   VALUES
 			   ('$type', '$name', '$address', '$city', '$state', '$zip', '$phone_country', 
-                           '$phone_area', '$phone_main', '$description', '4')");
+                           '$phone_area', '$phone_main', '$description', '4', '$lat', '$lon')");
     $new_id = mysql_insert_id($db_handle);
     echo nl2br("Charity Registration Complete - id = $new_id\n");
     $data = mysql_query("SELECT * FROM Charities");
