@@ -1,39 +1,61 @@
 <?php
-include 'databaselogin.php';
-
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-echo nl2br("username = $username \n password = $password\n");
-
-$db_handle = mysql_connect($server, $db_username, $db_password);
-if (!$db_handle) {
-    die(mysql_error());
-}
-echo nl2br("Connected successfully\n");
-$db_found = mysql_select_db($database, $db_handle);
-$data = mysql_query("SELECT * FROM Logins");
-while($row = mysql_fetch_assoc($data))
-{
-   print_r($row);
-   echo nl2br("\n");
-}
-if ($db_found) {
-$result = mysql_query("SELECT * FROM Logins WHERE (username = '$username') AND (password = '$password')");
-
-if ($result && mysql_num_rows($result) > 0)
-
-    {
-        echo nl2br("Username and Password Found\n"); 
-    }
-else
-    {
-    	echo nl2br("Username and Password NOT Found\n");
+$logged_in = False;
+unset($username);
+$secret_word = 'the horse raced past the barn fell';
+if ($_COOKIE['login']) {
+    list($c_username,$cookie_hash) = split(',',$_COOKIE['login']);
+    if (md5($c_username.$secret_word) == $cookie_hash) {
+        $username = $c_username;
+    } else {
+        print "You have sent a bad cookie.";
     }
 }
-else {
-print nl2br("Database NOT Found.\n");
-mysql_close($db_handle);
+
+if ($username) {
+    $logged_in = True;
 }
 
 ?>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+
+  <!--REQUIRED FOR HEADER-->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>$(function(){
+  $("#header").load("header.html"); });
+   </script>
+</head>
+<body>
+
+<!--REQUIRED FOR HEADER-->
+<div id="header"></div>
+<?php if($logged_in): ?>
+<form action="logout.php" method="post">
+   <fieldset align="center">
+   You are already signed in as <?php echo "$username";?>. Would you like to log out? <br>
+   <input type="submit" value="Logout"><br><br>
+   </fieldset>
+</form>         
+<!--Set up form for login information-->
+<?php else: ?>
+<form action="access.php" method="post">
+  <fieldset align="center">
+    <legend>Login information</legend>
+    Username<br>
+    <input type="text" name="username"><br>
+    Password<br>
+    <input type="text" name="password"><br><br>
+    <input type="submit" value="Submit"><br><br>
+
+    <!--Send user to password recovery page if they forgot password-->
+    <a href= "passrecover.html">I forgot my password</a>
+  </fieldset>
+</form>
+<?php endif; ?>
+</body>
+</html>
