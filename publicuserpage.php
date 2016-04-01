@@ -10,12 +10,22 @@ die(mysql_error());
 echo nl2br("Connected successfully\n");
 $db_found = mysql_select_db($database, $db_handle);
 if ($db_found) {
-$result = mysql_query("SELECT * FROM Logins WHERE (userid = '$id')");
-
-if ($result && mysql_num_rows($result) > 0)
-
+$user = mysql_query("SELECT * FROM Logins WHERE (userid = '$id')");
+$charities = NULL;
+if ($user && mysql_num_rows($user) > 0)
     {
-        print_r(mysql_fetch_assoc($result));
+        print_r(mysql_fetch_assoc($user));
+        echo "<br>";
+        $charities = mysql_query("SELECT * FROM Charities WHERE charity_owner = '$id'");
+        if ($charities && mysql_num_rows($charities) > 0)
+        {
+            print_r(mysql_fetch_assoc($charities));
+	    echo "<br>";
+        }
+        else
+        {
+            echo nl2br("No Charities to Display\n");
+        }       
     }
 else
     {

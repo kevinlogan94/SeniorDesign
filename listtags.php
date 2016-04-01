@@ -7,12 +7,12 @@ if (!$db_handle) {
 }
 echo nl2br("Connected successfully\n");
 $db_found = mysql_select_db($database, $db_handle);
-$data = mysql_query("SELECT tag_name FROM Tag");
+$data = mysql_query("SELECT * FROM Tag");
 ?>
 <form action="">
 <?php
 while($row = mysql_fetch_assoc($data))
 {
-   echo "<input type=\"checkbox\" name=\"tag\" value=\"".$row['tag_name']."\">".$row['tag_name']."<br>";
+   echo "<input type=\"checkbox\" name=\"".$row['tag_name']."\" value=\"".$row['tag_name']."\">".$row['tag_string']."<br>";
 }
 ?>
