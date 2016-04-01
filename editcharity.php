@@ -58,10 +58,15 @@ if ($user['userid'] != $charity['charity_owner']) {
   <fieldset>
     <legend>Edit Your Charity:</legend>
     Event Type:<br>
-    <select name="type" value="<?php echo $charity['charity_type'];?>">
-	<option value="1">Charity</option>
-	<option value="2">Program</option>
-	<option value="3">Event</option>
+<?php 
+if($charity['charity_type'] == 1) { $charity_selected = 'selected';}
+if($charity['charity_type'] == 2) { $program_selected = 'selected';}
+if($charity['charity_type'] == 3) { $event_selected = 'selected';}
+?>
+    <select name="type">
+	<option value="1" <?php echo $charity_selected ?>>Charity</option>
+	<option value="2" <?php echo $program_selected ?>>Program</option>
+	<option value="3" <?php echo $event_selected   ?>>Event</option>
     </select><br>
     Name:<br>
     <input type="text" name="name" value="<?php echo $charity['charity_name'];?>" size="50"><br>
