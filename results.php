@@ -12,7 +12,7 @@
 
 <?php
 include 'databaselogin.php';
-
+utf8_decode();
 $ZIP = $_POST['ZIP'];
 $distance = $_POST['formDistance'];
 
@@ -64,6 +64,5 @@ mysql_close($db_handle);
 }
 
 ?>
-ç
 </body>
 </html>

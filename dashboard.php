@@ -15,7 +15,7 @@ if ($_COOKIE['login']) {
 if ($username) {
     print "Welcome, $username.";
 } else {
-    header('location:login.html');
+    header('location:login.php');
 }
 
 $db_handle = mysql_connect($server, $db_username, $db_password);

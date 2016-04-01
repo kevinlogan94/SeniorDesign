@@ -19,8 +19,11 @@ if ($user && mysql_num_rows($user) > 0)
         $charities = mysql_query("SELECT * FROM Charities WHERE charity_owner = '$id'");
         if ($charities && mysql_num_rows($charities) > 0)
         {
-            print_r(mysql_fetch_assoc($charities));
-	    echo "<br>";
+            while($row = mysql_fetch_assoc($charities))
+            {
+   		print_r($row);
+   		echo nl2br("\n");
+	    }
         }
         else
         {
