@@ -1,3 +1,15 @@
+<html>
+<head>
+<!--REQUIRED FOR HEADER-->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>$(function(){
+  $("#header").load("header.html"); });
+   </script>
+</head>
+<body>
+<!--Required for header-->
+<div id="header"></div>
+
 <?php
 include 'databaselogin.php';
 
@@ -52,3 +64,6 @@ mysql_close($db_handle);
 }
 
 ?>
+ç
+</body>
+</html>
