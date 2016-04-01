@@ -13,7 +13,7 @@ if ($_COOKIE['login']) {
 }
 
 if ($username) {
-    print "Welcome, $username.";
+    print "Welcome, $username. ";
 } else {
     header('location:login.php');
 }
@@ -58,11 +58,14 @@ mysql_close($db_handle);
 <body>
 
 <!--REQUIRED FOR HEADER-->
-<div id="header"></div>
+k<div id="header"></div>
 
 <!-- List User's name -->
 <!-- List charities according to owner -->
 
+<!-- while loop goes here -->
+<div style="display:inline;" class="btn" id="editbtn"><a href="#">Edit</a></div>
+<div style="display:inline;" class="btn" id="delbtn"><a href="#">Delete</a></div>
 <p><a href="newcharity.php">Create new event</a></p>
 
 </body>

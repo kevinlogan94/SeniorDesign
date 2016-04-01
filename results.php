@@ -52,11 +52,20 @@ $query .= ") AND (c.lat BETWEEN $lat_lower AND $lat_upper) AND (c.lon BETWEEN $l
            GROUP BY c.charity_id ORDER BY count(*) DESC";
 echo nl2br("$query\n");
 $data = mysql_query($query);
-while ($row = mysql_fetch_assoc($data))
+/*while ($row = mysql_fetch_assoc($data))
 {
 	print_r($row);
 	echo nl2br("\n");
+}*/
+while ($row = mysql_fetch_object($data)) {
+	echo nl2br("<div>");
+	echo nl2br("<p>$row->charity_id</p>");
+	echo nl2br("<p>$row->charity_name</p>");
+	echo nl2br("<p>$row->street_address</p>");
+	echo nl2br("<p>$row->charity_description</p>");
+	echo nl2br("</div>");
 }
+mysql_free_result($data);
 }
 else {
 print nl2br("Database NOT Found.\n");
