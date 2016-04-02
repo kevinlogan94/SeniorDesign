@@ -7,6 +7,18 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
   $("#header").load("header.html"); });
+  
+   //form validation
+   function validateForm() {
+     var x = document.forms["myform"]["email address"].value;
+     var atpos = x.indexOf("@");
+     var dotpos = x.lastIndexOf(".");
+     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+     } 
+   }
+   
    </script>
 </head>
 <body>
@@ -15,7 +27,7 @@
 <div id="header"></div>
 
 <!--Set up form form to receive email for password recovery-->
-<form>
+<form name="myform" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
    <legend>Recover Password</legend>
    Please enter a valid Email Address <br>

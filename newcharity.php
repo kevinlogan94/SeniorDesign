@@ -1,11 +1,60 @@
 <head>
+
  <title>Register Charity/Event/Program</title>
   
  <!--REQUIRED FOR HEADER-->
  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
- <script>$(function(){
- $("#header").load("header.html"); });
- </script>
+ <script>
+
+ $(function(){
+   $("#header").load("header.html"); });
+  
+    //form validation
+    function validateForm() {
+    var fieldnames = ["Name", "Address", "City", "Description", "Zip Code", "Phone Area Code", "Phone Number"];
+    //var alerts = [];
+    var str = "";
+    //var sizealert = [];    
+
+    //create an array of all empty fields
+     for(i = 0; i < fieldnames.length; i++){
+	var x = document.forms["myform"][fieldnames[i]].value;
+
+	if(x == null || x == "") {
+/*	    if(fieldnames[i] == "Phone_area" || fieldnames[i] == "Phone_main") {
+		//if(i == fieldnames.length) {
+		   str += "Phone Number: Input Required\n";
+		//}	
+		alert(str);
+		return false;
+	    }
+	    else {
+*/            	str += fieldnames[i]+": Input Required\n";
+//       	    }
+	 }
+        else if(fieldnames[i] == "Zip Code" && x.length != 5)
+        {
+            str += "Zip Code: Enter a valid 5 digit Zip Code.\n";
+        }
+        else if(fieldnames[i] == "Phone Area Code" && x.length != 3)
+        {
+            str += fieldnames[i]+": Enter a valid 3 digit Area Code\n";
+        }
+        else if(fieldnames[i] == "Phone Number" && x.length != 7)
+        {
+            str += fieldnames[i]+": Please enter a valid phone number\n";
+        }
+    }
+    
+     if(str != "") {
+      alert(str);
+      return false;
+     }
+     
+
+  }
+
+</script>
 
  <?php
  include 'databaselogin.php';
@@ -24,7 +73,7 @@
  <!--REQUIRED FOR HEADER-->
  <div id="header"></div>
 
-<form action="processcharity.php" method="post">
+<form action="processcharity.php" method="post" name="myform" onsubmit="return validateForm()">
   <fieldset>
     <legend>Register Your Charity:</legend>
     Event Type:<br>
@@ -34,11 +83,11 @@
 	<option value="3">Event</option>
     </select><br>
     Name:<br>
-    <input type="text" name="name" size="50"><br>
+    <input type="text" name="Name" size="50"><br>
     Address:<br>
-    <input type="text" name="address" size="50"><br>
+    <input type="text" name="Address" size="50"><br>
     City:<br>
-    <input type="text" name="city" size="20"><br>
+    <input type="text" name="City" size="20"><br>
     State:<br>
     <select name = "type">
 	<option value="AL">Alabama</option>
@@ -94,28 +143,13 @@
 	<option value="WY">Wyoming</option>
     </select><br>
     Zip:<br>
-    <input type="text" id = 300 name="zip" size="5"><br>
-    <!--Allows only integers to be included in text area-->
-    <script>
-    $('#300').keypress(function(e) {
-    var a = [];
-    var k = e.which;
+    <input type="text" name="Zip Code" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
 
-    for (i = 48; i < 58; i++)
-        a.push(i);
-
-    if (!(a.indexOf(k)>=0))
-        e.preventDefault();
-    });
-    </script>
-
-
-    Contact Phone Number:<br>
-    <input type="text" name="phone_country" size="5"> - 
-    (<input type="text" name="phone_area" size="3" >)
-    <input type="text" name="phone_main" size="7"><br>
+    Contact Phone Number:<br> 
+    (<input type="text" name="Phone Area Code" size="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>)
+    <input type="text" name="Phone Number" size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Description:<br>
-    <textarea name="description" cols="100" rows="5" maxlength="500"></textarea><br><br>
+    <textarea name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 
     <?php include 'checks.php';?>
 
