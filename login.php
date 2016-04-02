@@ -28,12 +28,25 @@ if ($username) {
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
   $("#header").load("header.html"); });
+
+
+   //form validation
+   function validateForm() {
+    var x = document.forms["myform"]["username"].value;
+    var y = document.forms["myform"]["password"].value;
+    if (x == null || x == "" || y == null || y == "") {
+        alert("Please enter a Username and Password.");
+        return false;
+    }
+   }
    </script>
 </head>
 <body>
 
 <!--REQUIRED FOR HEADER-->
 <div id="header"></div>
+
+<!--Log out setup-->
 <?php if($logged_in): ?>
 <form action="logout.php" method="post">
    <fieldset align="center">
@@ -43,7 +56,7 @@ if ($username) {
 </form>         
 <!--Set up form for login information-->
 <?php else: ?>
-<form action="access.php" method="post">
+<form name = "myform" action="access.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
     <legend>Login information</legend>
     Username<br>

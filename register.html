@@ -7,13 +7,34 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
   $("#header").load("header.html"); });
+
+   //form validation
+   function validateForm() {
+     var emailval = document.forms["myform"]["email"].value;
+     var userval = document.forms["myform"]["username"].value;
+     var passval = document.forms["myform"]["password"].value;
+     var atpos = emailval.indexOf("@");
+     var dotpos = emailval.lastIndexOf(".");
+
+     if(passval == null || passval == "" || userval == null || userval == "") {
+    	alert("Please enter a Username, Password, and email address.");
+	return false;
+     }
+     else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailval.length) {
+        alert("Not a valid e-mail address");
+        return false;
+     } 
+
+   }
+
+
    </script>
 </head>
 <body>
  <!--REQUIRED FOR HEADER-->
  <div id="header"></div>
 
- <form action="register.php" method="post">
+ <form name="myform" action="register.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
     <legend>Register</legend>
     Username<br>

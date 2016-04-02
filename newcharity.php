@@ -21,17 +21,8 @@
 	var x = document.forms["myform"][fieldnames[i]].value;
 
 	if(x == null || x == "") {
-/*	    if(fieldnames[i] == "Phone_area" || fieldnames[i] == "Phone_main") {
-		//if(i == fieldnames.length) {
-		   str += "Phone Number: Input Required\n";
-		//}	
-		alert(str);
-		return false;
-	    }
-	    else {
-*/            	str += fieldnames[i]+": Input Required\n";
-//       	    }
-	 }
+            str += fieldnames[i]+": Input Required\n";
+	}
         else if(fieldnames[i] == "Zip Code" && x.length != 5)
         {
             str += "Zip Code: Enter a valid 5 digit Zip Code.\n";
@@ -44,16 +35,14 @@
         {
             str += fieldnames[i]+": Please enter a valid phone number\n";
         }
-    }
+     }
     
      if(str != "") {
       alert(str);
       return false;
      }
-     
-
+    
   }
-
 </script>
 
  <?php
@@ -144,7 +133,6 @@
     </select><br>
     Zip:<br>
     <input type="text" name="Zip Code" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
-
     Contact Phone Number:<br> 
     (<input type="text" name="Phone Area Code" size="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>)
     <input type="text" name="Phone Number" size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
