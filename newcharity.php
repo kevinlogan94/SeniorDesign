@@ -36,7 +36,7 @@
             str += fieldnames[i]+": Please enter a valid phone number\n";
         }
      }
-    
+     //Post an alert of all invalid entries    
      if(str != "") {
       alert(str);
       return false;
