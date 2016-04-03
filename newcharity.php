@@ -5,43 +5,70 @@
  <!--REQUIRED FOR HEADER-->
  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
  <script>
-
+//insert header
  $(function(){
    $("#header").load("header.html"); });
   
-    //form validation
+    /*
+	validateForm function
+	Purpose: Allow a user to submit their information or not based on whether the information is filled 
+			out correctly. If not they will be notified on the screen what needs to be filled out.
+	Parameters: None
+	Return:True if the submit can pass otherwise false.
+    */
     function validateForm() {
     var fieldnames = ["Name", "Address", "City", "Description", "Zip Code", "Phone Area Code", "Phone Number"];
-    //var alerts = [];
     var str = "";
-    //var sizealert = [];    
+    var ctr = 0;
 
-    //create an array of all empty fields
+    //Goes through the values of all fieldnames. Print a input error if it doesn't meet requirements
      for(i = 0; i < fieldnames.length; i++){
 	var x = document.forms["myform"][fieldnames[i]].value;
-
+ 
 	if(x == null || x == "") {
-            str += fieldnames[i]+": Input Required\n";
+	   ctr++;
+	   if(fieldnames[i] == "Phone Area Code") {
+                document.getElementById("Phone Number").innerHTML = " Input Required";
+		document.getElementById("Phone Number").style.color = "red";
+            }
+            else {
+		document.getElementById(fieldnames[i]).innerHTML = " Input Required";
+                document.getElementById(fieldnames[i]).style.color = "red";
+            }
 	}
         else if(fieldnames[i] == "Zip Code" && x.length != 5)
         {
-            str += "Zip Code: Enter a valid 5 digit Zip Code.\n";
-        }
+	   ctr++;
+           document.getElementById(fieldnames[i]).innerHTML = "  Enter a valid 5 digit Zip Code.";
+           document.getElementById(fieldnames[i]).style.color = "red";
+	}
         else if(fieldnames[i] == "Phone Area Code" && x.length != 3)
         {
-            str += fieldnames[i]+": Enter a valid 3 digit Area Code\n";
-        }
+           ctr++;
+           document.getElementById("Phone Number").innerHTML = "  Enter a valid 3 digit Area Code.";
+           document.getElementById("Phone Number").style.color = "red";
+	}
         else if(fieldnames[i] == "Phone Number" && x.length != 7)
         {
-            str += fieldnames[i]+": Please enter a valid phone number\n";
+	    ctr++;
+            document.getElementById(fieldnames[i]).innerHTML = " Enter a valid phone Number.";
+           document.getElementById(fieldnames[i]).style.color = "red" 
         }
+	else
+	{
+	    if(fieldnames[i] == "Phone Area Code") {
+		document.getElementById("Phone Number").innerHTML = "";
+	    }
+            else {
+	    document.getElementById(fieldnames[i]).innerHTML = "";
+	    }
+	}
      }
-     //Post an alert of all invalid entries    
-     if(str != "") {
-      alert(str);
-      return false;
+     //if there was in input error cancel the submit.
+     if(ctr > 0)
+     {
+	return false;
      }
-    
   }
 </script>
 
@@ -71,11 +98,13 @@
 	<option value="2">Program</option>
 	<option value="3">Event</option>
     </select><br>
-    Name:<br>
+    Name:<p style="display:inline" id="Name"></p><br>
     <input type="text" name="Name" size="50"><br>
-    Address:<br>
+    Date(if applicable):<br>
+    <input type="text" name="Program Date" size="10"><br>
+    Address:<p style="display:inline" id="Address"></p><br>
     <input type="text" name="Address" size="50"><br>
-    City:<br>
+    City: <p style="display:inline" id="City"></p><br>
     <input type="text" name="City" size="20"><br>
     State:<br>
     <select name = "type">
@@ -131,16 +160,15 @@
 	<option value="WI">Wisconsin</option>
 	<option value="WY">Wyoming</option>
     </select><br>
-    Zip:<br>
-    <input type="text" name="Zip Code" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
-    Contact Phone Number:<br> 
+    Zip: <p style="display:inline" id="Zip Code"></p><br>
+    <input type="text" name="Zip Code" id ="what" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    Contact Phone Number: <p style="display:inline" id="Phone Number"></p><br> 
     (<input type="text" name="Phone Area Code" size="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>)
     <input type="text" name="Phone Number" size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
-    Description:<br>
+    Description: <p style="display:inline" id="Description"></p><br>
     <textarea name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 
     <?php include 'checks.php';?>
-
 
     <br>
     <input type="submit" value="Submit">
