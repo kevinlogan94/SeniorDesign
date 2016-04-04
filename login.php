@@ -23,7 +23,8 @@ if ($username) {
 <html>
 <head>
   <title>Login</title>
-
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
   <!--REQUIRED FOR HEADER-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
@@ -56,19 +57,21 @@ if ($username) {
 </form>         
 <!--Set up form for login information-->
 <?php else: ?>
-<form name = "myform" action="access.php" method="post" onsubmit="return validateForm()">
+<div class="box">
+ <h1>Login</h1>
+ <form name = "myform" action="access.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
-    <legend>Login information</legend>
-    Username<br>
-    <input type="text" name="username"><br>
-    Password<br>
-    <input type="text" name="password"><br><br>
-    <input type="submit" value="Submit"><br><br>
-
+  <hr>
+  <label id="icon" for="name"><i class="icon-user"></i></label>
+  <input type="text" name="username" placeholder="Username"><br>
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <input type="password" name="password" placeholder="Password">
+  <input type="submit" value="Submit"><br>
     <!--Send user to password recovery page if they forgot password-->
     <a href= "passrecover.html">I forgot my password</a>
   </fieldset>
-</form>
+ </form>
+</div>
 <?php endif; ?>
 </body>
 </html>
