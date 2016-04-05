@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
    <title>Recover Password</title>
   
   <!--REQUIRED FOR HEADER-->
@@ -26,15 +28,18 @@
 <!--REQUIRED FOR HEADER-->
 <div id="header"></div>
 
+<div class="passrecoverbox">
+<h1>Recover Password</h1>
 <!--Set up form form to receive email for password recovery-->
 <form name="myform" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
-   <legend>Recover Password</legend>
-   Please enter a valid Email Address <br>
-   <input type="text" name="email address"><br><br>
+   <hr>
+   <label id="icon" for="name"><i class="icon-user"></i></label>
+   <input type="text" name="email address" placeholder="Email Address"><br><br>
    <input type="submit" value="Submit">
   </fieldset>
 </form>
+</div>
 </body>
 </html>
 
