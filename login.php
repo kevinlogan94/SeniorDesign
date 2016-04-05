@@ -64,8 +64,8 @@ if ($username) {
   <hr>
   <label id="icon" for="name"><i class="icon-user"></i></label>
   <input type="text" name="username" placeholder="Username"><br>
-  <label id="icon" for="name"><i class="icon-shield"></i></label>
-  <input type="password" name="password" placeholder="Password">
+  <label id="icon" for="name"><i class="icon-key"></i></label>
+  <input type="password" name="password" placeholder="Password"><br><br>
   <input type="submit" value="Submit"><br>
     <!--Send user to password recovery page if they forgot password-->
     <a href= "passrecover.html">I forgot my password</a>

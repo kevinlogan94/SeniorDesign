@@ -24,7 +24,7 @@ hr{
 }
 
 input[type=password]{
-  margin-bottom: 25px;
+  
 }
 
 input[type=text],input[type=password]{
@@ -76,6 +76,21 @@ form{
   box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
   border: solid 1px #cbc9c9;
 }
+
+.registerbox {
+  margin: 20px auto;
+  width: 343px;
+  height: 700px;
+  border-radius: 8px/7px;
+  border-radius: 8px/7px;
+  border-radius: 8px/7px;
+  background-color: #ebebeb;
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+  border: solid 1px #cbc9c9;
+}
+
 
 body,
 input,

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
   <title>Register</title>
   
   <!--REQUIRED FOR HEADER-->
@@ -33,18 +35,37 @@
 <body>
  <!--REQUIRED FOR HEADER-->
  <div id="header"></div>
-
+<div class="registerbox">
+ <h1>Register</h1> 
  <form name="myform" action="register.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
-    <legend>Register</legend>
-    Username<br>
-    <input type="text" name="username"><br>
-    Password<br>
-    <input type="text" name="password"><br>
-    Email<br>
-    <input type="text" name="email"><br><br>
+  <hr>
+    <label id="icon"><i class="icon-user"></i></label>  
+    <input type="text" name="username" placeholder="Username"><br>    
+
+    <label id="icon"><i class="icon-key"></i></label>  
+    <input type="password" name="password" placeholder="Password"><br>
+
+    <label id="icon"><i class="icon-shield"></i></label>
+    <input type="password" name="confpassword" placeholder="Retype Password"><br>
+
+    <label id="icon"><i class="icon-envelope"></i></label>
+    <input type="text" name="email" placeholder="Email"><br>
+
+    <label id="icon"><i class="icon-shield"></i></label>
+    <input type="text" name="confemail" placeholder="Retype Email"><br><br>
+
+    <label id="icon"><i class="icon-user"></i></label>
+    <input type="text" name="firstname" placeholder="First Name"><br>
+
+    <label id="icon"><i class="icon-user"></i></label>
+    <input type="text" name="lastname" placeholder="Last Name"><br>
+
+    <label id="icon"><i class="icon-phone"></i></label>
+    <input type="text" name="phone" placeholder="Phone Number"><br><br>
     <input type="submit" value="Submit">
   </fieldset>
  </form>
+ </div>
 </body>
 </html>
