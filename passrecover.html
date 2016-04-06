@@ -1,3 +1,11 @@
+<!--
+Prolog: passrecover.html
+
+Purpose: Page that allows a user to input their email and have their password sent to them.
+Preconditions: Input a valid email address and click submit
+Postconditions: User should receive an email including their password.  
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +18,17 @@
   <script>$(function(){
   $("#header").load("header.html"); });
   
-   //form validation
+   /*Form Validation Function
+     Purpose: Checks to make sure the user has inputted a valid email address in order to submit. 
+     Preconditions:Click the submit button.
+     Postconditions: If invalid email in included, an alert will be posted to the screen and the cancel the submit.
+     Return: False if the email isn't valid otherwise true.
+   */
    function validateForm() {
-     var x = document.forms["myform"]["email address"].value;
-     var atpos = x.indexOf("@");
-     var dotpos = x.lastIndexOf(".");
-     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+     var emailval = document.forms["myform"]["email address"].value;
+     var atpos = emailval.indexOf("@");
+     var dotpos = emailval.lastIndexOf(".");
+     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailval.length) {
         alert("Not a valid e-mail address");
         return false;
      } 

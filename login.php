@@ -1,3 +1,12 @@
+<!--
+Prolog: login.php
+
+Purpose: Page that allows a user to log in to their created account or go to password recovery page.
+Preconditions: Input a username and password, then submit. Otherwise click I forgot my password.
+Postconditions: User is transitioned into their own personal user dashboard. Otherwise transitioned
+	to the password recovery page.
+-->
+
 <?php
 $logged_in = False;
 unset($username);
@@ -31,7 +40,12 @@ if ($username) {
   $("#header").load("header.html"); });
 
 
-   //form validation
+   /*Form Validation Function
+     Purpose: Checks to make sure the user has inputted a username and password in order to submit. 
+     Preconditions:Click the submit button.
+     Postconditions: If a username and/or password aren't inputted, an alert will be posted to the screen and the cancel the submit.
+     Return: False if the username/password aren't inputted isn't isn't inputted otherwise true.
+   */
    function validateForm() {
     var x = document.forms["myform"]["username"].value;
     var y = document.forms["myform"]["password"].value;
