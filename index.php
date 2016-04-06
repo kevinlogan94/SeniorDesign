@@ -3,6 +3,8 @@
 <head>
   <title>Landing Page</title>
 
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
   <!--REQUIRED FOR HEADER-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
@@ -21,9 +23,8 @@
 </head>
 <body>
 
-<!--REQUIRED FOR HEADER-->
+<div class="landing">
 <div id="header"></div>
-
 <!--Set up form for search results-->
 <form name="myform" action="results.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
@@ -38,7 +39,7 @@
       <option value="20">20 miles</option>
       <option value="50">50 miles</option>
     </select><br>
-
+</div>
     <?php include 'listtags.php';?>
     <input type="submit" value="Submit"><br><br>
   </fieldset>
