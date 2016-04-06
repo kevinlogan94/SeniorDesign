@@ -1,5 +1,5 @@
 <head>
-
+<!-- <link rel="stylesheet" type="text/css" href="style.css">-->
  <title>Register Charity/Event/Program</title>
   
  <!--REQUIRED FOR HEADER-->
@@ -64,6 +64,18 @@
 	    }
 	}
      }
+     //if it's checked
+      if ($("input[type='checkbox']").is(":checked"))
+      {
+         document.getElementById("check").innerHTML = "";
+      }
+      else
+      {
+	ctr++;
+	document.getElementById("check").innerHTML = "You must click a checkbox.";
+	document.getElementById("check").style.color = "red"
+      }
+
      //if there was in input error cancel the submit.
      if(ctr > 0)
      {
@@ -160,14 +172,15 @@
 	<option value="WI">Wisconsin</option>
 	<option value="WY">Wyoming</option>
     </select><br>
-    Zip: <p style="display:inline" id="Zip Code"></p><br>
-    <input type="text" name="Zip Code" id ="what" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    Zip Code: <p style="display:inline" id="Zip Code"></p><br>
+    <input type="text" name="Zip Code"  size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Contact Phone Number: <p style="display:inline" id="Phone Number"></p><br> 
     (<input type="text" name="Phone Area Code" size="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>)
     <input type="text" name="Phone Number" size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Description: <p style="display:inline" id="Description"></p><br>
     <textarea name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 
+    <p  id="check"></p>
     <?php include 'checks.php';?>
 
     <br>
