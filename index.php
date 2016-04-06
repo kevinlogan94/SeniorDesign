@@ -12,12 +12,38 @@
 
   //form validation
   function validateForm() {
-    var x = document.forms["myform"]["ZIP"].value;
-    if (x == null || x == "" || x.length != 5) {
-        alert("Zip Code: Please enter a valid 5 digit Zip Code.");
-        return false;
+    var zipval = document.forms["myform"]["Zip Code"].value;
+    var ctr = 0;
+
+    if (zipval == null || zipval == "" || zipval.length != 5) {
+        document.getElementById("Zip Code").innerHTML = "Please enter a valid 5 digit Zip Code.";
+        document.getElementById("Zip Code").style.color = "red"
+	ctr++;
     }
-}
+    else
+    {
+	document.getElementById("Zip Code").innerHTML = "";
+    }
+
+      //if it's checked
+    if ($("input[type='checkbox']").is(":checked"))
+    {
+       document.getElementById("check").innerHTML = "";
+    }
+    else
+    {
+      ctr++;
+      document.getElementById("check").innerHTML = "You must click a checkbox.";
+      document.getElementById("check").style.color = "red"
+    }
+
+    if(ctr > 0)
+    {
+	return false;
+    }
+	
+
+  }
 
    </script>
 </head>
@@ -30,7 +56,8 @@
   <fieldset align="center">
     <legend>Enter Info</legend>
     Zip Code<br>
-    <input type="text" name="ZIP" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    <input type="text" name="Zip Code" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    <p id="Zip Code"></p>
     Distance<br>
     <select name="formDistance">
       <option value="1">1 mile</option>
@@ -40,6 +67,7 @@
       <option value="50">50 miles</option>
     </select><br>
 </div>
+    <p id="check"></p>
     <?php include 'listtags.php';?>
     <input type="submit" value="Submit"><br><br>
   </fieldset>
