@@ -54,7 +54,7 @@
 <!--Set up form for search results-->
 <form name="myform" action="results.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
-    <legend>Enter Info</legend>
+    <!--<legend>Enter Info</legend>--><div class="vert">
     Zip Code<br>
     <input type="text" name="Zip Code" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     <p id="Zip Code"></p>
@@ -66,6 +66,7 @@
       <option value="20">20 miles</option>
       <option value="50">50 miles</option>
     </select><br>
+</div>
 </div>
     <p id="check"></p>
     <?php include 'listtags.php';?>

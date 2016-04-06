@@ -75,6 +75,10 @@ form{
   margin: 0 30px;
 }
 
+fieldset {
+  border:none;
+}
+
 .box {
   margin: 20px auto;
   width: 343px; 
