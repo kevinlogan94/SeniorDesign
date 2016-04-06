@@ -75,10 +75,6 @@ form{
   margin: 0 30px;
 }
 
-form[name="myform"] {
-  padding-top:74px;
-}
-
 .box {
   margin: 20px auto;
   width: 343px; 
