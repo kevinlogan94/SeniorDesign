@@ -18,6 +18,7 @@ input[type="submit"] {
     cursor:pointer;
     border-radius: 5px;
     border-radius: 5px;
+    margin-top:20px;
     margin-bottom: 20px; 
 }
 
@@ -39,8 +40,7 @@ input[type=password]{
   
 }
 
-input[type=text],input[type=password]{
-  width: 150px; 
+input[type=text],input[type=password]{ 
   height: 39px; 
   border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
   border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
@@ -95,8 +95,8 @@ fieldset {
 
 .registerbox {
   margin: 20px auto;
-  width: 343px;
-  height: 700px;
+  width:  825px;
+  height: 600px;
   border-radius: 8px/7px;
   border-radius: 8px/7px;
   border-radius: 8px/7px;
@@ -119,6 +119,17 @@ fieldset {
   box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   border: solid 1px #cbc9c9;
+}
+
+.rows {
+  display: inline-block;
+  padding: 5px;
+}
+
+#shift {
+	display:block;
+	margin: 0 auto;
+	text-align: center; 
 }
 
 
