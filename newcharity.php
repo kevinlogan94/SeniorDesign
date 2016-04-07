@@ -114,13 +114,13 @@ $data = mysql_query("SELECT * FROM Tag");
 <body>
  <!--REQUIRED FOR HEADER-->
  <div id="header"></div>
-
+<div class="newcharitybox">
 <form action="processcharity.php" method="post" name="myform" onsubmit="return validateForm()">
   <fieldset>
-    <h1>Register Your Charity</h1>
+    <h1>Register Your Charity/Event/Program</h1>
     <hr>
     Event Type:<br>
-    <select name="type">
+    <select id="dropdowntextarea" name="type">
 	<option value="1">Charity</option>
 	<option value="2">Program</option>
 	<option value="3">Event</option>
@@ -134,7 +134,7 @@ $data = mysql_query("SELECT * FROM Tag");
     City: <p style="display:inline" id="City"></p><br>
     <input type="text" name="City" size="20"><br>
     State:<br>
-    <select name = "type">
+    <select id="dropdowntextarea" name = "type">
 	<option value="AL">Alabama</option>
 	<option value="AK">Alaska</option>
 	<option value="AZ">Arizona</option>
@@ -190,17 +190,18 @@ $data = mysql_query("SELECT * FROM Tag");
     Zip Code: <p style="display:inline" id="Zip Code"></p><br>
     <input type="text" name="Zip Code"  size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Contact Phone Number: <p style="display:inline" id="Phone Number"></p><br> 
-    (<input type="text" name="Phone Area Code" size="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>)
-    <input type="text" name="Phone Number" size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    <input type="text" name="Phone Area Code" placeholder="XXX" size="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+    - <input type="text" id="phoneshift" name="Phone Number" placeholder="XXXXXXX"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Description: <p style="display:inline" id="Description"></p><br>
-    <textarea name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
+    <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 
     <p  id="check"></p>
     <?php include 'checks.php';?>
-
+    
     <br>
     <input type="hidden" name="owner" value="<?php echo $username; ?>">
     <input type="submit" value="Submit">
   </fieldset>
+</div>
 </form>
 </body>
