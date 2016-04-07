@@ -1,5 +1,5 @@
 <head>
-<!-- <link rel="stylesheet" type="text/css" href="style.css">-->
+ <link rel="stylesheet" type="text/css" href="style.css">
  <title>Register Charity/Event/Program</title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
  <!--REQUIRED FOR HEADER-->
@@ -103,7 +103,8 @@
 
 <form action="processcharity.php" method="post" name="myform" onsubmit="return validateForm()">
   <fieldset>
-    <legend>Register Your Charity:</legend>
+    <h1>Register Your Charity</h1>
+    <hr>
     Event Type:<br>
     <select name="type">
 	<option value="1">Charity</option>
