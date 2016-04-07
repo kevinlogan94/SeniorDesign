@@ -13,6 +13,10 @@ $data = mysql_query("SELECT * FROM Tag");
 <?php
 while($row = mysql_fetch_assoc($data))
 {
-   echo "<input type=\"checkbox\" name=\"".$row['tag_name']."\" value=\"".$row['tag_name']."\">".$row['tag_string']."<br>";
+   //echo "<input type=\"checkbox\" name=\"".$row['tag_name']."\" value=\"".$row['tag_name']."\">".$row['tag_string']."<br>";
+   echo "<div class=\"checkdiv\">
+	<input class=\"checkbox-custom\" type=\"checkbox\" id=\"in".$row['tag_name']."\" name=\"".$row['tag_name']."\" />
+	<label class=\"checkbox-custom-label\" for=\"in".$row['tag_name']."\">".$row['tag_string']."</label>
+</div>";
 }
 ?>
