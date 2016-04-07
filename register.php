@@ -4,6 +4,11 @@ include 'databaselogin.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 $email = $_POST['email'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$phone = $_POST['phone'];
+
+$fullname = $firstname." ".$lastname;
 
 echo nl2br("username = $username \n password = $password \n email = $email\n");
 
@@ -29,8 +34,8 @@ if ($result && mysql_num_rows($result) > 0)
     }
 else
     {
-	$result = mysql_query("INSERT INTO Logins (username, password, email) 
-						VALUES ('$username', '$password', '$email')");
+	$result = mysql_query("INSERT INTO Logins (username, password, email, contact_name, contact_number) 
+					VALUES ('$username', '$password', '$email', '$fullname', '$phone')");
     	echo nl2br("Registration complete\n");
 	$data = mysql_query("SELECT * FROM Logins");
 	while($row = mysql_fetch_assoc($data))

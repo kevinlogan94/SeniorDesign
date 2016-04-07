@@ -1,3 +1,28 @@
+<?php
+include 'databaselogin.php';
+unset($username);
+$secret_word = 'the horse raced past the barn fell';
+if ($_COOKIE['login']) {
+    list($c_username,$cookie_hash) = split(',',$_COOKIE['login']);
+    if (md5($c_username.$secret_word) == $cookie_hash) {
+        $username = $c_username;
+    } else {
+        print "You have sent a bad cookie.";
+    }
+}
+
+if (!$username) {
+    header('location:login.php');
+}
+
+$db_handle = mysql_connect($server, $db_username, $db_password);
+if (!$db_handle) {
+   die(mysql_error());
+}
+$db_found = mysql_select_db($database, $db_handle);
+$data = mysql_query("SELECT * FROM Tag");
+?>
+
 <head>
  <link rel="stylesheet" type="text/css" href="style.css">
  <title>Register Charity/Event/Program</title>
@@ -84,17 +109,6 @@
   }
 </script>
 
- <?php
- include 'databaselogin.php';
-
- $db_handle = mysql_connect($server, $db_username, $db_password);
- if (!$db_handle) {
-    die(mysql_error());
- }
- echo nl2br("Connected successfully\n");
- $db_found = mysql_select_db($database, $db_handle);
- $data = mysql_query("SELECT * FROM Tag");
- ?>
 
 </head>
 <body>
@@ -185,6 +199,7 @@
     <?php include 'checks.php';?>
 
     <br>
+    <input type="hidden" name="owner" value="<?php echo $username; ?>">
     <input type="submit" value="Submit">
   </fieldset>
 </form>

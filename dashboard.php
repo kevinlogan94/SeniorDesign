@@ -58,7 +58,7 @@ mysql_close($db_handle);
 <body>
 
 <!--REQUIRED FOR HEADER-->
-k<div id="header"></div>
+<div id="header"></div>
 
 <!-- List User's name -->
 <!-- List charities according to owner -->

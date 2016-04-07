@@ -12,20 +12,17 @@ if (!$db_handle) {
 }
 echo nl2br("Connected successfully\n");
 $db_found = mysql_select_db($database, $db_handle);
-$data = mysql_query("SELECT * FROM Logins");
-while($row = mysql_fetch_assoc($data))
-{
-   print_r($row);
-   echo nl2br("\n");
-}
 if ($db_found) {
-$result = mysql_query("SELECT * FROM Logins WHERE (username = '$username') AND (password = '$password')");
+$result = mysql_query("SELECT * FROM Logins WHERE (username = '$username' OR email = '$username') 
+							AND (password = '$password')");
 
 if ($result && mysql_num_rows($result) > 0)
 
     {
+	$user = mysql_fetch_assoc($result);
+	$username = $user['username'];
 	$secret_word = 'the horse raced past the barn fell';
-        setcookie('login', $_REQUEST['username'].','.md5($_REQUEST['username'].$secret_word), time() + 10800); 
+        setcookie('login', $username.','.md5($username.$secret_word), time() + 10800); 
         header('location:dashboard.php');
     }
 else

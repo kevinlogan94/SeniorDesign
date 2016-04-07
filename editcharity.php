@@ -39,10 +39,8 @@ if ($_COOKIE['login']) {
     }
 }
 
-$user = mysql_fetch_assoc(mysql_query("SELECT * FROM Logins WHERE username = '$username'"));
-
-if ($user['userid'] != $charity['charity_owner']) {
-   header('location:login.php');
+if ($username != $charity['charity_owner']) {
+   header('location:dashboard.php');
 }
 
 

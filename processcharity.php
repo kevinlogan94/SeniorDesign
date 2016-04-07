@@ -11,6 +11,7 @@ $phone_country = $_POST['phone_country'];
 $phone_area = $_POST['phone_area'];
 $phone_main = $_POST['phone_main'];
 $description = $_POST['description'];
+$owner = $_POST['owner'];
 $lat = 0;
 $lon = 0;
 
@@ -40,7 +41,7 @@ if ($db_found) {
                            charity_owner, lat, lon)
 			   VALUES
 			   ('$type', '$name', '$address', '$city', '$state', '$zip', '$phone_country', 
-                           '$phone_area', '$phone_main', '$description', '4', '$lat', '$lon')");
+                           '$phone_area', '$phone_main', '$description', '$owner', '$lat', '$lon')");
     $new_id = mysql_insert_id($db_handle);
     echo nl2br("Charity Registration Complete - id = $new_id\n");
     $data = mysql_query("SELECT * FROM Charities");

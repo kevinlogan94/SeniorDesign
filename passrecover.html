@@ -25,7 +25,7 @@ Postconditions: User should receive an email including their password.
      Return: False if the email isn't valid otherwise true.
    */
    function validateForm() {
-     var emailval = document.forms["myform"]["email address"].value;
+     var emailval = document.forms["myform"]["email"].value;
      var atpos = emailval.indexOf("@");
      var dotpos = emailval.lastIndexOf(".");
      if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailval.length) {
@@ -44,11 +44,11 @@ Postconditions: User should receive an email including their password.
 <div class="passrecoverbox">
 <h1>Recover Password</h1>
 <!--Set up form form to receive email for password recovery-->
-<form name="myform" method="post" onsubmit="return validateForm()">
+<form name="myform" action="passrecover.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
    <hr>
    <label id="icon" for="name"><i class="icon-user"></i></label>
-   <input type="text" name="email address" placeholder="Email Address"><br><br>
+   <input type="text" name="email" placeholder="Email Address"><br><br>
    <input type="submit" value="Submit">
   </fieldset>
 </form>
