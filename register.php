@@ -12,26 +12,23 @@
 
    //form validation
    function validateForm() {
-     var emailval = document.forms["myform"]["email"].value;
-     var confemval = document.forms["myform"]["confemail"].value;
-     var userval = document.forms["myform"]["username"].value;
-     var passval = document.forms["myform"]["password"].value;
-     var confpassval = document.forms["myform"]["confpass"].value;
-     var firstname = document.forms["myform"]["firstname"].value;
-     var lastname = document.forms["myform"]["lastname"].value;
-     var phonval = document.forms["myform"]["phone"].value;
-     var atpos = emailval.indexOf("@");
-     var dotpos = emailval.lastIndexOf(".");
     
-     var inputs = ["email", "username", "password", "firstname", "lastname", "phone"];
+     var inputs = ["email", "username", "password", "firstname", "lastname", "area", "phone"];
      var ctr = 0;     
      for (i = 0; i < inputs.length; i++) {
 
 	var value = document.forms["myform"][inputs[i]].value;
 	if (value == "" || value == null) {
-		ctr++;
-			document.getElementById(inputs[i]).innerHTML = " Input Required";
-                	document.getElementById(inputs[i]).style.color = "red";
+         	ctr++;
+		if(inputs[i] == "area") {
+                	document.getElementById("phone").innerHTML = " Input Required";
+                	document.getElementById("phone").style.color = "red";
+            	}
+            	else {
+               		document.getElementById(inputs[i]).innerHTML = " Input Required";
+               		document.getElementById(inputs[i]).style.color = "red";
+		}
+
 	}
         else if(inputs[i] == "email") {
 		var atpos = value.indexOf("@");
@@ -53,27 +50,33 @@
 	}
 	else if (inputs[i] == "password"){
 		var confpassval = document.forms["myform"]["confpass"].value;
-		if(value != confpassval)
-		{
+		if(value != confpassval) {
 			ctr++;
 			document.getElementById(inputs[i]).innerHTML = " Password doesn't match.";
 			document.getElementById(inputs[i]).style.color = "red";
 		}
-		else
-		{
+		else {
 			 document.getElementById(inputs[i]).innerHTML = "";
 		}
 		
 	}
+	else if(inputs[i] == "area" && value.length != 3) {
+           ctr++;
+           document.getElementById(inputs[i]).innerHTML = "Invalid 3 digit Area Code.";
+           document.getElementById(inputs[i]).style.color = "red";
+        }
+        else if(inputs[i] == "phone" && value.length != 7) {
+            ctr++;
+            document.getElementById(inputs[i]).innerHTML = "Invalid phone Number.";
+            document.getElementById(inputs[i]).style.color = "red"; 
+        }
 	else {
 		document.getElementById(inputs[i]).innerHTML = "";
-	}
-     }
-
-     if (ctr > 0) {
-	return false;
-     }
-
+        }
+    }
+    if (ctr > 0) {
+      return false;
+        }   
     }
 
    </script>
@@ -141,10 +144,14 @@
     <br>
     <div class="rows">
        <label id="icon"><i class="icon-phone"></i></label>
-       <input type="text" name="phone" placeholder="Phone Number" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+        <input type="text" name="area" placeholder="###" size="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+    - <input type="text" id="phoneshift" name="phone" placeholder="#######"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     </div>
     <div class="rows">
-       <p id="phone"></p>
+       <p id="area"></p>
+    </div>
+    <div class="rows">
+       <p id="phone">
     </div>
     <br>
     <br>
