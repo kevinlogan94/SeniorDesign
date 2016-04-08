@@ -89,7 +89,7 @@
  <?php 
     session_start();
     if (!empty($_SESSION['register_error_msg'])) {
-        echo "<div id=\"error\">Error: ".$_SESSION['register_error_msg']."</div>";
+        echo "<div style=\"color: red; text-align: center;\">Error: ".$_SESSION['register_error_msg']."</div>";
         unset($_SESSION['register_error_msg']);
     }
  ?>

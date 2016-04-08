@@ -46,7 +46,7 @@ Postconditions: User should receive an email including their password.
 <?php 
     session_start();
     if (!empty($_SESSION['recover_error_msg'])) {
-        echo "<div id=\"error\">Error: ".$_SESSION['recover_error_msg']."</div>";
+        echo "<div style=\"color: red; text-align: center;\">Error: ".$_SESSION['recover_error_msg']."</div>";
         unset($_SESSION['recover_error_msg']);
     }
 ?>

@@ -77,7 +77,7 @@ if ($username) {
 <?php 
     session_start();
     if (!empty($_SESSION['login_error_msg'])) {
-        echo "<div id=\"error\">Error: ".$_SESSION['login_error_msg']."</div>";
+        echo "<div style=\"color: red; text-align: center;\">Error: ".$_SESSION['login_error_msg']."</div>";
         unset($_SESSION['login_error_msg']);
     }
 ?>
@@ -90,7 +90,7 @@ if ($username) {
   <input type="password" name="password" placeholder="Password"><br><br>
   <input type="submit" value="Submit"><br>
     <!--Send user to password recovery page if they forgot password-->
-    <a href= "passrecover.html">I forgot my password</a>
+    <a href= "passrecover.php">I forgot my password</a>
   </fieldset>
  </form>
 </div>
