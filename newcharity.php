@@ -1,3 +1,12 @@
+<!--
+Prolog: newcharity.php
+
+Purpose: Page that allows a user to create a new event/program/charity.	
+Preconditions: Input a name, date(if applicable), address, city, zip code, description, state, contact phone number,
+	and tags associated with this. 
+Postconditions: Users new event/program/charity is put into the database. Page transition to the dashboard page.
+-->
+
 <?php
 include 'databaselogin.php';
 unset($username);
@@ -84,7 +93,7 @@ $data = mysql_query("SELECT * FROM Tag");
 	    document.getElementById(inputs[i]).innerHTML = "";
 	}
      }
-     //if it's checked
+     //if a check box is checked or not. 
       if ($("input[type='checkbox']").is(":checked"))
       {
          document.getElementById("check").innerHTML = "";

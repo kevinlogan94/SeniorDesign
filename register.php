@@ -1,3 +1,12 @@
+<!--
+Prolog: register.php
+
+Purpose: Allow user to create an account on the website.
+Preconditions: Fill out first name, last name, username, password, retype password, email, retype email, and number contact.
+Postconditions: Page transition to their new dashboard. Account information inputted into the database.
+-->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +19,13 @@
   <script>$(function(){
   $("#header").load("header.html"); });
 
-   //form validation
+   /*
+        validateForm function
+        Purpose: Allow a user to submit their information or not based on whether the information is filled 
+                        out correctly. If not they will be notified on the screen what needs to be filled out.
+        Parameters: None
+        Return:True if the submit can pass otherwise false.
+  */
    function validateForm() {
     
      var inputs = ["email", "username", "password", "firstname", "lastname", "area", "phone"];

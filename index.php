@@ -1,3 +1,11 @@
+<!--
+Prolog: index.php
+
+Purpose: Landing page for the website. Allows a user to submit a search, register, login, or go to the dashboard if their logged in. 
+Preconditions: Input a valid zip code, distance, and checkbox associated for what you are looking for.
+Postconditions: Transition to the Search Results page.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +18,13 @@
   <script>$(function(){
   $("#header").load("header.html"); });
 
-  //form validation
+  /*
+        validateForm function
+        Purpose: Allow a user to submit their information or not based on whether the information is filled 
+                        out correctly. If not they will be notified on the screen what needs to be filled out.
+        Parameters: None
+        Return:True if the submit can pass otherwise false.
+  */
   function validateForm() {
     var zipval = document.forms["myform"]["Zip Code"].value;
     var ctr = 0;
@@ -25,7 +39,7 @@
 	document.getElementById("Zip Code").innerHTML = "";
     }
 
-      //if it's checked
+      //if a checkbox is filled out or not.
     if ($("input[type='checkbox']").is(":checked"))
     {
        document.getElementById("check").innerHTML = "";
@@ -37,6 +51,7 @@
       document.getElementById("check").style.color = "red"
     }
 
+    //return false if submit doesn't pass.
     if(ctr > 0)
     {
 	return false;

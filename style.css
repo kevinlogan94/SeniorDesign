@@ -1,3 +1,11 @@
+/* 
+Prolog: style.css
+
+Purpose: Allow consistent page styling on all pages. 
+Preconditions: Included on all pages of the website.
+Postconditions: CSS Styling on all the pages.
+*/
+
 div.vert {
 	text-align:center;
 	color:#fff;
@@ -76,6 +84,7 @@ div.landing.bottom {
   padding-top:50px;
 }
 
+/*Submit button styling for each page.*/
 input[type="submit"] {
     padding:5px 15px; 
     background:#ccc; 
@@ -87,6 +96,7 @@ input[type="submit"] {
     margin-bottom: 20px; 
 }
 
+/*Main header styling for each page.*/
 h1 {
   font-size: 32px;
   font-weight: 300;
@@ -96,11 +106,13 @@ h1 {
   margin-bottom: 10px;
 }
 
+/*Styling for bar under each h1 on newcharity, login.php, register.php, and passrecover.php*/
 hr{
   color: #a9a9a9;
   opacity: 0.3;
 }
 
+/*Specific Styling for inputs on all pages*/
 input[type=text],input[type=password]{ 
   height: 39px;
   border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
@@ -117,6 +129,7 @@ input[type=text],input[type=password]{
   margin-bottom:10px;
 }
 
+/*Styling for icons used on login.php, register.php, and passrecover.php*/
 #icon {
   display: inline-block;
   width: 30px;
@@ -137,10 +150,12 @@ form{
   margin: 0 30px;
 }
 
+/*Remove square surrounding all forms.*/
 fieldset {
   border:none;
 }
 
+/*Box surrounding the form on login.php */
 .box {
   margin: 20px auto;
   width: 400px; 
@@ -155,6 +170,7 @@ fieldset {
   border: solid 1px #cbc9c9;
 }
 
+/*Box surrounding the form on register.php */
 .registerbox {
   margin: 20px auto;
   width:  825px;
@@ -169,6 +185,7 @@ fieldset {
   border: solid 1px #cbc9c9;
 }
 
+/*Box surrounding the form on passrecover.php */
 .passrecoverbox {
   margin: 20px auto;
   width: 400px;
@@ -183,6 +200,7 @@ fieldset {
   border: solid 1px #cbc9c9;
 }
 
+/*Box surrounding the form on newcharity.php */
 .newcharitybox {
   margin: 20px auto;
   width:  900px;
@@ -198,18 +216,19 @@ fieldset {
 
 }
 
+/*Used on register.php to allow inputs to be put in a row*/
 .rows {
   display: inline-block;
   padding: 5px;
 }
 
-
+/*Used on register.php to shift everything to the center*/
 #shift {
 	display:block;
 	margin: 0 auto;
 	text-align: center; 
 }
-
+/*Fix dropdown box and text area issue on newcharity.php so they are consistent with the inputs*/
 #dropdowntextarea {
   border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
   border-radius: 0px 4px 4px 0px/0px 0px 4px 4px;
@@ -225,12 +244,12 @@ fieldset {
   margin-bottom:10px;
 
 }
-
+/*Used on the register page to fix phone display error*/
 #phoneshift {
 	margin-left:0px;
 
 }
-
+/*Page body, input, textarea, and select styling. Allow them all to be consistent.*/
 body,
 input,
 textarea,
