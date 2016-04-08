@@ -30,13 +30,22 @@ $result = mysql_query("SELECT * FROM Logins WHERE (username = '$username')");
 if ($result && mysql_num_rows($result) > 0)
 
     {
-        print_r(mysql_fetch_assoc($result));
+        $user = mysql_fetch_assoc($result);
+        print_r($user);
     }
 else
     {
         echo nl2br("User Does Not Exist\n");
     }
 }
+
+$result = mysql_query("SELECT * FROM Charities WHERE (charity_owner = '$username')");
+
+if ($result && mysql_num_rows($result) > 0) {
+        print_r(mysql_fetch_assoc($result));
+        echo "<br>";
+}
+
 else {
 print nl2br("Database NOT Found.\n");
 mysql_close($db_handle);

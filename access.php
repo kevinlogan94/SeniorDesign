@@ -27,7 +27,9 @@ if ($result && mysql_num_rows($result) > 0)
     }
 else
     {
-    	echo nl2br("Username and Password NOT Found\n");
+	session_start();
+    	$_SESSION['login_error_msg'] = "Wrong username/email or password";
+	header('location:login.php');
     }
 }
 else {

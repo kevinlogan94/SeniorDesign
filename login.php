@@ -74,6 +74,13 @@ if ($username) {
 <?php else: ?>
 <div class="box">
  <h1>Login</h1>
+<?php 
+    session_start();
+    if (!empty($_SESSION['login_error_msg'])) {
+        echo "<div id=\"error\">Error: ".$_SESSION['login_error_msg']."</div>";
+        unset($_SESSION['login_error_msg']);
+    }
+?>
  <form name = "myform" action="access.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
   <hr>

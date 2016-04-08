@@ -82,8 +82,15 @@
  <!--REQUIRED FOR HEADER-->
  <div id="header"></div>
 <div class="registerbox">
- <h1>Register</h1> 
- <form name="myform" action="register.php" method="post" onsubmit="return validateForm()">
+ <h1>Register</h1>
+ <?php 
+    session_start();
+    if (!empty($_SESSION['register_error_msg'])) {
+        echo "<div id=\"error\">Error: ".$_SESSION['register_error_msg']."</div>";
+        unset($_SESSION['register_error_msg']);
+    }
+ ?>
+ <form name="myform" action="processreg.php" method="post" onsubmit="return validateForm()">
   
   <hr>
     <div class="rows">
