@@ -1,53 +1,156 @@
-<?php
-include 'databaselogin.php';
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <!--REQUIRED FOR HEADER-->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>$(function(){
+  $("#header").load("header.html"); });
 
-$username = $_POST['username'];
-$password = $_POST['password'];
-$email = $_POST['email'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$phone = $_POST['phone'];
+   //form validation
+   function validateForm() {
+     var emailval = document.forms["myform"]["email"].value;
+     var confemval = document.forms["myform"]["confemail"].value;
+     var userval = document.forms["myform"]["username"].value;
+     var passval = document.forms["myform"]["password"].value;
+     var confpassval = document.forms["myform"]["confpass"].value;
+     var firstname = document.forms["myform"]["firstname"].value;
+     var lastname = document.forms["myform"]["lastname"].value;
+     var phonval = document.forms["myform"]["phone"].value;
+     var atpos = emailval.indexOf("@");
+     var dotpos = emailval.lastIndexOf(".");
+    
+     var inputs = ["email", "username", "password", "firstname", "lastname", "phone"];
+     var ctr = 0;     
+     for (i = 0; i < inputs.length; i++) {
 
-$fullname = $firstname." ".$lastname;
-
-echo nl2br("username = $username \n password = $password \n email = $email\n");
-
-$db_handle = mysql_connect($server, $db_username, $db_password);
-if (!$db_handle) {
-    die(mysql_error());
-}
-echo nl2br("Connected successfully\n");
-$db_found = mysql_select_db($database, $db_handle);
-$data = mysql_query("SELECT * FROM Logins");
-while($row = mysql_fetch_assoc($data))
-{
-   print_r($row);
-   echo nl2br("\n");
-}
-if ($db_found) {
-$result = mysql_query("SELECT * FROM Logins WHERE (username = '$username') OR (email = '$email')");
-
-if ($result && mysql_num_rows($result) > 0)
-
-    {
-        echo nl2br("An account is already linked to that username or email"); 
-    }
-else
-    {
-	$result = mysql_query("INSERT INTO Logins (username, password, email, contact_name, contact_number) 
-					VALUES ('$username', '$password', '$email', '$fullname', '$phone')");
-    	echo nl2br("Registration complete\n");
-	$data = mysql_query("SELECT * FROM Logins");
-	while($row = mysql_fetch_assoc($data))
-	{
-   	    print_r($row);
-   	    echo nl2br("\n");
+	var value = document.forms["myform"][inputs[i]].value;
+	if (value == "" || value == null) {
+		ctr++;
+			document.getElementById(inputs[i]).innerHTML = " Input Required";
+                	document.getElementById(inputs[i]).style.color = "red";
 	}
-    }
-}
-else {
-print nl2br("Database NOT Found.\n");
-mysql_close($db_handle);
-}
+        else if(inputs[i] == "email") {
+		var atpos = value.indexOf("@");
+     		var dotpos = value.lastIndexOf(".");
+		var confemval = document.forms["myform"]["confemail"].value;
+		if(atpos<1 || dotpos<atpos+2 || dotpos+2>=value.length) {
+			ctr++;
+			document.getElementById(inputs[i]).innerHTML = " Invalid Email Address.";
+                	document.getElementById(inputs[i]).style.color = "red";
+		}
+		else if(value != confemval) {
+			ctr++;
+			document.getElementById(inputs[i]).innerHTML = " Email doesn't match.";
+			document.getElementById(inputs[i]).style.color = "red";
+		}
+		else {
+			document.getElementById(inputs[i]).innerHTML = "";
+		}
+	}
+	else if (inputs[i] == "password"){
+		var confpassval = document.forms["myform"]["confpass"].value;
+		if(value != confpassval)
+		{
+			ctr++;
+			document.getElementById(inputs[i]).innerHTML = " Password doesn't match.";
+			document.getElementById(inputs[i]).style.color = "red";
+		}
+		else
+		{
+			 document.getElementById(inputs[i]).innerHTML = "";
+		}
+		
+	}
+	else {
+		document.getElementById(inputs[i]).innerHTML = "";
+	}
+     }
 
-?>
+     if (ctr > 0) {
+	return false;
+     }
+
+    }
+
+   </script>
+</head>
+<body>
+ <!--REQUIRED FOR HEADER-->
+ <div id="header"></div>
+<div class="registerbox">
+ <h1>Register</h1> 
+ <form name="myform" action="register.php" method="post" onsubmit="return validateForm()">
+  
+  <hr>
+    <div class="rows">
+       <label id="icon"><i class="icon-user"></i></label>
+       <input type="text" name="firstname" placeholder="First Name">
+    </div>
+    <div class="rows">
+       <label id="icon"><i class="icon-user"></i></label>
+       <input type="text" name="lastname" placeholder="Last Name"><br>
+    </div>
+    <div class="rows">
+       <p id="firstname"></p>
+    </div>
+    <div class="rows">
+       <p id="lastname"></p>
+    </div>
+     <br>
+   
+    <!-- <label>Account Information</label>
+     <hr>--> 
+    <div class="rows">
+       <label id="icon"><i class="icon-user"></i></label>
+       <input type="text" name="username" placeholder="Username">
+    </div>
+    <div class="rows">
+    <p id="username"></p>
+    </div>
+    <br>
+    <div class="rows">
+       <label id="icon"><i class="icon-key"></i></label>  
+       <input type="password" name="password" placeholder="Password"><br>
+    </div>
+    <div class="rows">
+       <label id="icon"><i class="icon-shield"></i></label>
+       <input type="password" name="confpass" placeholder="Retype Password">
+    </div>
+    <div class="rows">
+       <p  id="password"></p>
+    </div>
+    <br>
+    <br>
+    <label id="shift">Contact</label>
+    <hr>
+    <div class="rows">
+       <label id="icon"><i class="icon-envelope"></i></label>
+       <input type="text" name="email" placeholder="Email">
+    </div>
+    <div class="rows">
+       <label id="icon"><i class="icon-shield"></i></label>
+       <input type="text" name="confemail" placeholder="Retype Email"><br>
+    </div>
+    <div class="rows">
+       <p id="email"></p>
+    </div>
+    <br>
+    <div class="rows">
+       <label id="icon"><i class="icon-phone"></i></label>
+       <input type="text" name="phone" placeholder="Phone Number" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    </div>
+    <div class="rows">
+       <p id="phone"></p>
+    </div>
+    <br>
+    <br>
+    <input id="shift" type="submit" value="Submit">
+  </fieldset>
+ </form>
+ </div>
+</body>
+</html>
