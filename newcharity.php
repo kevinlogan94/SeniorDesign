@@ -42,51 +42,46 @@ $data = mysql_query("SELECT * FROM Tag");
 	Return:True if the submit can pass otherwise false.
     */
     function validateForm() {
-    var fieldnames = ["Name", "Address", "City", "Description", "Zip Code", "Phone Area Code", "Phone Number"];
+    var inputs = ["Name", "Address", "City", "Description", "Zip Code", "area", "phone"];
     var str = "";
     var ctr = 0;
 
-    //Goes through the values of all fieldnames. Print a input error if it doesn't meet requirements
-     for(i = 0; i < fieldnames.length; i++){
-	var x = document.forms["myform"][fieldnames[i]].value;
+    //Goes through the values of all inputs. Print a input error if it doesn't meet requirements
+     for(i = 0; i < inputs.length; i++){
+	var value = document.forms["myform"][inputs[i]].value;
  
-	if(x == null || x == "") {
+	if(value == null || value == "") {
 	   ctr++;
-	   if(fieldnames[i] == "Phone Area Code") {
-                document.getElementById("Phone Number").innerHTML = " Input Required";
-		document.getElementById("Phone Number").style.color = "red";
+	   if(inputs[i] == "area") {
+                document.getElementById("phone").innerHTML = " Input Required.";
+		document.getElementById("phone").style.color = "red";
             }
             else {
-		document.getElementById(fieldnames[i]).innerHTML = " Input Required";
-                document.getElementById(fieldnames[i]).style.color = "red";
+		document.getElementById(inputs[i]).innerHTML = " Input Required.";
+                document.getElementById(inputs[i]).style.color = "red";
             }
 	}
-        else if(fieldnames[i] == "Zip Code" && x.length != 5)
+        else if(inputs[i] == "Zip Code" && value.length != 5)
         {
 	   ctr++;
-           document.getElementById(fieldnames[i]).innerHTML = "  Enter a valid 5 digit Zip Code.";
-           document.getElementById(fieldnames[i]).style.color = "red";
+           document.getElementById(inputs[i]).innerHTML = "  Enter a valid 5 digit Zip Code.";
+           document.getElementById(inputs[i]).style.color = "red";
 	}
-        else if(fieldnames[i] == "Phone Area Code" && x.length != 3)
+        else if(inputs[i] == "area" && value.length != 3)
         {
            ctr++;
-           document.getElementById("Phone Number").innerHTML = "  Enter a valid 3 digit Area Code.";
-           document.getElementById("Phone Number").style.color = "red";
+           document.getElementById(inputs[i]).innerHTML = "  Enter a valid 3 digit Area Code.";
+           document.getElementById(inputs[i]).style.color = "red";
 	}
-        else if(fieldnames[i] == "Phone Number" && x.length != 7)
+        else if(inputs[i] == "phone" && value.length != 7)
         {
 	    ctr++;
-            document.getElementById(fieldnames[i]).innerHTML = " Enter a valid phone Number.";
-           document.getElementById(fieldnames[i]).style.color = "red" 
+            document.getElementById(inputs[i]).innerHTML = " Enter a valid phone Number.";
+           document.getElementById(inputs[i]).style.color = "red" 
         }
 	else
 	{
-	    if(fieldnames[i] == "Phone Area Code") {
-		document.getElementById("Phone Number").innerHTML = "";
-	    }
-            else {
-	    document.getElementById(fieldnames[i]).innerHTML = "";
-	    }
+	    document.getElementById(inputs[i]).innerHTML = "";
 	}
      }
      //if it's checked
@@ -189,9 +184,9 @@ $data = mysql_query("SELECT * FROM Tag");
     </select><br>
     Zip Code: <p style="display:inline" id="Zip Code"></p><br>
     <input type="text" name="Zip Code"  size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
-    Contact Phone Number: <p style="display:inline" id="Phone Number"></p><br> 
-    <input type="text" name="Phone Area Code" placeholder="XXX" size="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-    - <input type="text" id="phoneshift" name="Phone Number" placeholder="XXXXXXX"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    Contact Phone Number: <p style="display:inline" id="phone"></p><p style="display:inline" id="area"></p><br> 
+    <input type="text" name="area" placeholder="###" size="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+    - <input type="text" id="phoneshift" name="phone" placeholder="#######"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Description: <p style="display:inline" id="Description"></p><br>
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 
