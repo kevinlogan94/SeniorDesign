@@ -50,7 +50,7 @@ $data = mysql_query("SELECT * FROM Tag");
 	Return:True if the submit can pass otherwise false.
     */
     function validateForm() {
-    var inputs = ["Name", "Address", "City", "Description", "Zip Code", "area", "phone"];
+    var inputs = ["Name", "Address", "City", "Description", "ZipCode", "Area", "Phone"];
     var str = "";
     var ctr = 0;
 
@@ -60,28 +60,28 @@ $data = mysql_query("SELECT * FROM Tag");
  
 	if(value == null || value == "") {
 	   ctr++;
-	   if(inputs[i] == "area") {
-                document.getElementById("phone").innerHTML = " Input Required.";
-		document.getElementById("phone").style.color = "red";
+	   if(inputs[i] == "Area") {
+                document.getElementById("Phone").innerHTML = " Input Required.";
+		document.getElementById("Phone").style.color = "red";
             }
             else {
 		document.getElementById(inputs[i]).innerHTML = " Input Required.";
                 document.getElementById(inputs[i]).style.color = "red";
             }
 	}
-        else if(inputs[i] == "Zip Code" && value.length != 5)
+        else if(inputs[i] == "ZipCode" && value.length != 5)
         {
 	   ctr++;
            document.getElementById(inputs[i]).innerHTML = "  Enter a valid 5 digit Zip Code.";
            document.getElementById(inputs[i]).style.color = "red";
 	}
-        else if(inputs[i] == "area" && value.length != 3)
+        else if(inputs[i] == "Area" && value.length != 3)
         {
            ctr++;
            document.getElementById(inputs[i]).innerHTML = "  Enter a valid 3 digit Area Code.";
            document.getElementById(inputs[i]).style.color = "red";
 	}
-        else if(inputs[i] == "phone" && value.length != 7)
+        else if(inputs[i] == "Phone" && value.length != 7)
         {
 	    ctr++;
             document.getElementById(inputs[i]).innerHTML = " Enter a valid phone Number.";
@@ -200,7 +200,7 @@ $data = mysql_query("SELECT * FROM Tag");
     City: <p style="display:inline" id="City"></p><br>
     <input type="text" name="City" size="20"><br>
     State:<br>
-    <select id="dropdowntextarea" name = "state">
+    <select id="dropdowntextarea" name = "State">
 	<option value="AL">Alabama</option>
 	<option value="AK">Alaska</option>
 	<option value="AZ">Arizona</option>
@@ -253,11 +253,11 @@ $data = mysql_query("SELECT * FROM Tag");
 	<option value="WI">Wisconsin</option>
 	<option value="WY">Wyoming</option>
     </select><br>
-    Zip Code: <p style="display:inline" id="Zip Code"></p><br>
-    <input type="text" name="Zip Code"  size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    Zip Code: <p style="display:inline" id="ZipCode"></p><br>
+    <input type="text" name="ZipCode"  size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Contact Phone Number: <p style="display:inline" id="phone"></p><p style="display:inline" id="area"></p><br> 
-    <input type="text" name="area" placeholder="###" size="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-    - <input type="text" id="phoneshift" name="phone" placeholder="#######"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    <input type="text" name="Area" placeholder="###" size="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+    - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Description: <p style="display:inline" id="Description"></p><br>
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 

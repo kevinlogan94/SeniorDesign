@@ -14,7 +14,7 @@
 <?php
 include 'databaselogin.php';
 utf8_decode();
-$ZIP = $_POST['ZIP'];
+$ZIP = $_POST['ZipCode'];
 $distance = $_POST['formDistance'];
 
 echo nl2br("ZIP = $ZIP \n distance = $distance miles\n");

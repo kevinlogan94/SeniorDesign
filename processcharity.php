@@ -2,16 +2,19 @@
 include 'databaselogin.php';
 
 $type = $_POST['type'];
-$name = $_POST['name'];
-$address = $_POST['address'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$zip = $_POST['zip'];
-$phone_country = $_POST['phone_country'];
-$phone_area = $_POST['phone_area'];
-$phone_main = $_POST['phone_main'];
-$description = $_POST['description'];
+$name = $_POST['Name'];
+$address = $_POST['Address'];
+$city = $_POST['City'];
+$state = $_POST['State'];
+$zip = $_POST['ZipCode'];
+$phone_area = $_POST['Area'];
+$phone_main = $_POST['Phone'];
+$description = $_POST['Description'];
 $owner = $_POST['owner'];
+$day = $_POST['day'];
+$month = $_POST['month'];
+$year = $_POST['year'];
+$date = $year."-".$month."-".$day;
 $lat = 0;
 $lon = 0;
 
@@ -37,11 +40,11 @@ if ($db_found) {
    }
    $result = mysql_query("INSERT INTO Charities 
 			   (charity_type, charity_name, street_address, city_name, state_abrev, 
-                           zip_code, phone_country, phone_area, phone_main, charity_description,
+                           zip_code, phone_area, phone_main, charity_description, start_date,
                            charity_owner, lat, lon)
 			   VALUES
-			   ('$type', '$name', '$address', '$city', '$state', '$zip', '$phone_country', 
-                           '$phone_area', '$phone_main', '$description', '$owner', '$lat', '$lon')");
+			   ('$type', '$name', '$address', '$city', '$state', '$zip', '$phone_area', 
+                            '$phone_main', '$description', '$date', '$owner', '$lat', '$lon')");
     $new_id = mysql_insert_id($db_handle);
     echo nl2br("Charity Registration Complete - id = $new_id\n");
     $data = mysql_query("SELECT * FROM Charities");
@@ -71,4 +74,4 @@ print nl2br("Database NOT Found.\n");
 mysql_close($db_handle);
 }
 
-?>
+?> 

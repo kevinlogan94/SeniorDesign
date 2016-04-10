@@ -26,17 +26,17 @@ Postconditions: Transition to the Search Results page.
         Return:True if the submit can pass otherwise false.
   */
   function validateForm() {
-    var zipval = document.forms["myform"]["Zip Code"].value;
+    var zipval = document.forms["myform"]["ZipCode"].value;
     var ctr = 0;
 
     if (zipval == null || zipval == "" || zipval.length != 5) {
-        document.getElementById("Zip Code").innerHTML = "Please enter a valid 5 digit Zip Code.";
-        document.getElementById("Zip Code").style.color = "red"
+        document.getElementById("ZipCode").innerHTML = "Please enter a valid 5 digit Zip Code.";
+        document.getElementById("ZipCode").style.color = "red"
 	ctr++;
     }
     else
     {
-	document.getElementById("Zip Code").innerHTML = "";
+	document.getElementById("ZipCode").innerHTML = "";
     }
 
       //if a checkbox is filled out or not.
@@ -70,7 +70,7 @@ Postconditions: Transition to the Search Results page.
 <form name="myform" action="results.php" method="post" onsubmit="return validateForm()">
     <div class="vert"><div>
     Zip Code<br>
-    <input type="text" name="Zip Code" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    <input type="text" name="ZipCode" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     <p id="Zip Code"></p></div>
 <div>
     Distance<br>
