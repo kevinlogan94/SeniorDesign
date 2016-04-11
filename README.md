@@ -13,21 +13,21 @@ check.php - File pulls the specific checkboxes out of the databases. Included on
 
 dashboard.php - File for the Dashboard. Page that allows organizations to edit, delete, and create events/programs/charities.
 
-databaselogin.php
+databaselogin.php - Individual file for each group member to include database login information.
 
-dump.sql
+dump.sql - Creates the required tables.
 
 editcharity.php
 
-event.php
+event.php - Page for individual event information.
 
 header.html - File included in each page of the website. Allows each page to have a header at the top.
 
 index.php - Main Landing page file for the site.
 
-landingpage.php
+landingpage.php - Temporary page to show correct database functionality/connections.
 
-listtags.php
+listtags.php - File incorporated into other pages to display tags from the database as checkboxes.
 
 login.php - File for the login page. Allows users to login into their personal account.
 
@@ -41,15 +41,15 @@ passrecover.php - File for the password recovery page
 
 processcharity.php
 
-publicuserpage.php
+publicuserpage.php - Public page for users to see all of the events/charities/programs for a single registered nonprofit.
 
 README.md - This File
 
 register.html - File for the Registration page for organizations.
 
-register.php
+register.php - Page for new user registration.
 
-results.php
+results.php - Page listing results for user from home page.
 
 style.css - Main css file used for the overall styling of the website.
 
