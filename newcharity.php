@@ -255,7 +255,7 @@ $data = mysql_query("SELECT * FROM Tag");
     </select><br>
     Zip Code: <p style="display:inline" id="ZipCode"></p><br>
     <input type="text" name="ZipCode"  size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
-    Contact Phone Number: <p style="display:inline" id="phone"></p><p style="display:inline" id="area"></p><br> 
+    Contact Phone Number: <p style="display:inline" id="Phone"></p><p style="display:inline" id="Area"></p><br> 
     <input type="text" name="Area" placeholder="###" size="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
     - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
     Description: <p style="display:inline" id="Description"></p><br>

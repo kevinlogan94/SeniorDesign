@@ -71,7 +71,7 @@ Postconditions: Transition to the Search Results page.
     <div class="vert"><div>
     Zip Code<br>
     <input type="text" name="ZipCode" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
-    <p id="Zip Code"></p></div>
+    <p id="ZipCode"></p></div>
 <div>
     Distance<br>
     <select name="formDistance">
