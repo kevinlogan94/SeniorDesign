@@ -60,7 +60,7 @@ $data = mysql_query($query);
 	echo nl2br("\n");
 }*/
 while ($row = mysql_fetch_object($data)) {
-	echo nl2br("<div>");
+	echo nl2br("<div class="result">");
 	echo nl2br("<p>$row->charity_id</p>");
 	echo nl2br("<p>$row->charity_name</p>");
 	echo nl2br("<p>$row->street_address</p>");
