@@ -35,6 +35,7 @@ $data = mysql_query("SELECT * FROM Tag");
 <head>
  <link rel="stylesheet" type="text/css" href="style.css">
  <title>Register Charity/Event/Program</title>
+ <!--MOBILE-->
  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
  <!--REQUIRED FOR HEADER-->
  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -262,7 +263,7 @@ $data = mysql_query("SELECT * FROM Tag");
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 
     <p  id="check"></p>
-    <?php include 'checks.php';?>
+    <?php include 'listtags.php';?>
     
     <br>
     <input type="hidden" name="owner" value="<?php echo $username; ?>">

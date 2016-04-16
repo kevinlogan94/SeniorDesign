@@ -13,6 +13,7 @@ Postconditions: Page transition to their new dashboard. Account information inpu
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
   <title>Register</title>
+  <!--MOBILE-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <!--REQUIRED FOR HEADER-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>

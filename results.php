@@ -1,5 +1,6 @@
 <html>
 <head>
+<!--MOBILE-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--REQUIRED FOR HEADER-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>

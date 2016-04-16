@@ -161,12 +161,8 @@ fieldset {
   width: 400px; 
   height: 470px; 
   border-radius: 8px/7px; 
-  border-radius: 8px/7px; 
-  border-radius: 8px/7px; 
   background-color: #ebebeb; 
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   border: solid 1px #cbc9c9;
 }
 
@@ -176,11 +172,7 @@ fieldset {
   width:  825px;
   height: 600px;
   border-radius: 8px/7px;
-  border-radius: 8px/7px;
-  border-radius: 8px/7px;
   background-color: #ebebeb;
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   border: solid 1px #cbc9c9;
 }
@@ -191,11 +183,7 @@ fieldset {
   width: 400px;
   height: 350px;
   border-radius: 8px/7px;
-  border-radius: 8px/7px;
-  border-radius: 8px/7px;
   background-color: #ebebeb;
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   border: solid 1px #cbc9c9;
 }
@@ -206,11 +194,7 @@ fieldset {
   width:  900px;
   height: 1000px;
   border-radius: 8px/7px;
-  border-radius: 8px/7px;
-  border-radius: 8px/7px;
   background-color: #ebebeb;
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   box-shadow: 1px 2px 5px rgba(0,0,0,.31);
   border: solid 1px #cbc9c9;
 
@@ -231,11 +215,7 @@ fieldset {
 /*Fix dropdown box and text area issue on newcharity.php so they are consistent with the inputs*/
 #dropdowntextarea {
   border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
-  border-radius: 0px 4px 4px 0px/0px 0px 4px 4px;
-  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
   background-color: #fff;
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
   box-shadow: 1px 2px 5px rgba(0,0,0,.09);
   border: solid 1px #cbc9c9;
   margin-left: -5px;
