@@ -20,13 +20,13 @@ utf8_decode();
 $ZIP = $_POST['ZipCode'];
 $distance = $_POST['formDistance'];
 
-echo nl2br("ZIP = $ZIP \n distance = $distance miles\n");
+//echo nl2br("ZIP = $ZIP \n distance = $distance miles\n");
 
 $db_handle = mysql_connect($server, $db_username, $db_password);
 if (!$db_handle) {
     die(mysql_error());
 }
-echo nl2br("Connected successfully\n");
+//echo nl2br("Connected successfully\n");
 $db_found = mysql_select_db($database, $db_handle);
 
 if ($db_found) {
@@ -63,11 +63,19 @@ $data = mysql_query($query);
 }*/
 while ($row = mysql_fetch_object($data)) {
 	echo nl2br("<div class=\"result\">");
-	echo nl2br("<p>$row->charity_id</p>");
-	echo nl2br("<p>$row->charity_name</p>");
-	echo nl2br("<p>$row->street_address</p>");
+	if ($row->charity_type =="1"){
+		echo nl2br("<img src=\"charity.png\"/>");
+	} else if ($row->charity_type =="2") {
+		echo nl2br("<img src=\"program.png\"/>");
+	} else if ($row->charity_type == "3") {
+		echo nl2br("<img src=\"event.png\"/>");
+	}
+	echo nl2br("<div><h2>$row->charity_name</h2>");
+	echo nl2br("<p>$row->street_address, $row->city_name, $row->state_abrev $row->zip_code</p>");
+	echo nl2br("<p>$row->phone_country-$row->phone_area-$row->phone_main</p>");
 	echo nl2br("<p>$row->charity_description</p>");
-	echo nl2br("</div>");
+	// this is where tags will go	
+	echo nl2br("</div></div>");
 }
 mysql_free_result($data);
 }
