@@ -2,6 +2,8 @@
 <head>
 <!--MOBILE-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 <!--REQUIRED FOR HEADER-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
@@ -52,7 +54,7 @@ while($row = mysql_fetch_assoc($data))
 }
 $query .= ") AND (c.lat BETWEEN $lat_lower AND $lat_upper) AND (c.lon BETWEEN $lon_lower AND $lon_upper) 
            GROUP BY c.charity_id ORDER BY count(*) DESC";
-echo nl2br("$query\n");
+//echo nl2br("$query\n");
 $data = mysql_query($query);
 /*while ($row = mysql_fetch_assoc($data))
 {

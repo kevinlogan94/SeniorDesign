@@ -7,6 +7,12 @@ Postconditions: CSS Styling on all the pages.
 */
 
 
+/*Results Page */
+.result {
+	/*border:1px solid black;*/
+	color:red;
+}
+
 /*Above the fold for landing page*/
 div.vert {
 	text-align:center;
@@ -98,7 +104,6 @@ input[type="submit"] {
     background:#ccc; 
     border:0 none;
     cursor:pointer;
-    border-radius: 5px;
     border-radius: 5px;
     margin-top:20px;
     margin-bottom: 20px; 
