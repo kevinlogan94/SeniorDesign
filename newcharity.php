@@ -36,7 +36,9 @@ $data = mysql_query("SELECT * FROM Tag");
  <link rel="stylesheet" type="text/css" href="style.css">
  <title>Register Charity/Event/Program</title>
  <!--MOBILE-->
- <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" type="text/css" href="style.css">
+ <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
  <!--REQUIRED FOR HEADER-->
  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
  <script>
@@ -101,7 +103,7 @@ $data = mysql_query("SELECT * FROM Tag");
       else
       {
 	ctr++;
-	document.getElementById("check").innerHTML = "You must click a checkbox.";
+	document.getElementById("check").innerHTML = " You must click a checkbox.";
 	document.getElementById("check").style.color = "red"
       }
 
@@ -123,7 +125,7 @@ $data = mysql_query("SELECT * FROM Tag");
   <fieldset>
     <h1>Register Your Charity/Event/Program</h1>
     <hr>
-    Event Type:<br>
+    Type:<br>
     <select id="dropdowntextarea" name="type">
 	<option value="1">Charity</option>
 	<option value="2">Program</option>
@@ -262,9 +264,9 @@ $data = mysql_query("SELECT * FROM Tag");
     Description: <p style="display:inline" id="Description"></p><br>
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 
-    <p  id="check"></p>
+    Tags Related:<p style="display:inline" id="check"></p><br>
     <?php include 'listtags.php';?>
-    
+
     <br>
     <input type="hidden" name="owner" value="<?php echo $username; ?>">
     <input type="submit" value="Submit">

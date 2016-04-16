@@ -61,6 +61,16 @@ $data = mysql_query($query);
 	print_r($row);
 	echo nl2br("\n");
 }*/
+
+echo "<h1>Your Results</h1>";
+//Side bar for filter
+echo "<nav>";
+echo "<div style='font-weight:bold;'>Filter by:<br></div>";
+echo "<input type='checkbox'> Program<br>";
+echo "<input type='checkbox'> Charity<br>";
+echo "<input type='checkbox'> Event";
+echo "</nav>";
+
 while ($row = mysql_fetch_object($data)) {
 	echo nl2br("<div class=\"result\">");
 	if ($row->charity_type =="1"){
