@@ -17,8 +17,8 @@
 <?php
 include 'databaselogin.php';
 utf8_decode();
-$ZIP = $_POST['ZipCode'];
-$distance = $_POST['formDistance'];
+$ZIP = $_GET['ZipCode'];
+$distance = $_GET['formDistance'];
 
 //echo nl2br("ZIP = $ZIP \n distance = $distance miles\n");
 
@@ -46,12 +46,34 @@ $first = True;
 $data = mysql_query("SELECT * FROM Tag");
 while($row = mysql_fetch_assoc($data))
 {
-    if(isset($_POST[$row['tag_name']])) {
+    if(isset($_GET[$row['tag_name']])) {
         if (!$first) {$query .= " OR ";}
         $query .= "(t2c.tag_id = ".$row['tag_id'].")";
         $first = False;
     } 
 }
+$first = True;
+if(isset($_GET['charity_filt'])) {
+	$query .= ") AND (c.charity_type=1";
+	$first = False;
+}
+if(isset($_GET['program_filt'])) {
+	if($first) {
+		$query .= ") AND (c.charity_type=2";
+		$first = False;
+	} else {
+		$query .= " OR c.charity_type=2";
+	}	
+}
+if(isset($_GET['event_filt'])) {
+        if($first) {
+                $query .= ") AND (c.charity_type=3";
+                $first = False;
+        } else {
+                $query .= " OR c.charity_type=3";
+        }
+}
+
 $query .= ") AND (c.lat BETWEEN $lat_lower AND $lat_upper) AND (c.lon BETWEEN $lon_lower AND $lon_upper) 
            GROUP BY c.charity_id ORDER BY count(*) DESC";
 //echo nl2br("$query\n");
@@ -61,16 +83,29 @@ $results = mysql_query($query);
 	print_r($row);
 	echo nl2br("\n");
 }*/
-
-echo "<h1>Your Results</h1>";
-//Side bar for filter
-echo "<nav>";
-echo "<div style='font-weight:bold;'>Filter by:<br></div>";
-echo "<input type='checkbox'> Program<br>";
-echo "<input type='checkbox'> Charity<br>";
-echo "<input type='checkbox'> Event";
-echo "</nav>";
-
+?>
+<h1>Your Results</h1>
+<nav>
+<div style='font-weight:bold;'>Filter by:<br></div>
+<form action="results.php" method="get">
+<input type='hidden' name="ZipCode" value='<?php echo $ZIP?>'>
+<input type='hidden' name="formDistance" value='<?php echo $distance?>'>
+<?php
+$data = mysql_query("SELECT * FROM Tag");
+while($row = mysql_fetch_assoc($data))
+{
+    if(isset($_GET[$row['tag_name']])) {
+        echo nl2br("<input type='hidden' name='".$row['tag_name']."' value='on'>");
+    }
+}
+?>
+<input type='checkbox' name="charity_filt" <?php if(isset($_GET['charity_filt'])) {echo "CHECKED";}?>>Charity<br>
+<input type='checkbox' name="program_filt" <?php if(isset($_GET['program_filt'])) {echo "CHECKED";}?>>Program<br>
+<input type='checkbox' name="event_filt" <?php if(isset($_GET['event_filt'])) {echo "CHECKED";}?>>Event
+<input type="submit" value="Filter"><br><br>
+</form>
+</nav>
+<?php
 while ($row = mysql_fetch_object($results)) {
 	echo nl2br("<div class=\"result\">");
 	if ($row->charity_type =="1"){

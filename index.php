@@ -68,7 +68,7 @@ Postconditions: Transition to the Search Results page.
 <div class="landing">
 <div id="header"></div>
 <!--Set up form for search results-->
-<form name="myform" action="results.php" method="post" onsubmit="return validateForm()">
+<form name="myform" action="results.php" method="get" onsubmit="return validateForm()">
     <div class="vert"><div>
     Zip Code<br>
     <input type="text" name="ZipCode" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
