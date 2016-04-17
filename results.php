@@ -55,7 +55,7 @@ while($row = mysql_fetch_assoc($data))
 $query .= ") AND (c.lat BETWEEN $lat_lower AND $lat_upper) AND (c.lon BETWEEN $lon_lower AND $lon_upper) 
            GROUP BY c.charity_id ORDER BY count(*) DESC";
 //echo nl2br("$query\n");
-$data = mysql_query($query);
+$results = mysql_query($query);
 /*while ($row = mysql_fetch_assoc($data))
 {
 	print_r($row);
@@ -71,7 +71,7 @@ echo "<input type='checkbox'> Charity<br>";
 echo "<input type='checkbox'> Event";
 echo "</nav>";
 
-while ($row = mysql_fetch_object($data)) {
+while ($row = mysql_fetch_object($results)) {
 	echo nl2br("<div class=\"result\">");
 	if ($row->charity_type =="1"){
 		echo nl2br("<img src=\"charity.png\"/>");
@@ -82,10 +82,23 @@ while ($row = mysql_fetch_object($data)) {
 	}
 	echo nl2br("<div><h2>$row->charity_name</h2>");
 	echo nl2br("<p>$row->street_address, $row->city_name, $row->state_abrev $row->zip_code</p>");
-	echo nl2br("<p>$row->phone_country-$row->phone_area-$row->phone_main</p>");
+	echo nl2br("<p>$row->phone_area-$row->phone_main</p>");
 	echo nl2br("<p>$row->charity_description</p>");
-	// this is where tags will go	
-	echo nl2br("</div></div>");
+	$tags = mysql_query("SELECT t.* FROM Tag t INNER JOIN Tag2Charity t2c ON t.tag_id = t2c.tag_id 
+                             WHERE (t2c.charity_id = $row->charity_id)");
+        echo nl2br("<p>Tags: ");
+	$first = true;
+	while ($tag = mysql_fetch_assoc($tags)) {
+		if ($first) {
+			echo nl2br($tag['tag_string']);
+			$first = false;
+		} else {
+			echo nl2br(", ".$tag['tag_string']);
+		} 
+	}
+	mysql_free_result($tags);
+	echo nl2br("</p>");
+	echo nl2br("</div></div>"); 
 }
 mysql_free_result($data);
 }

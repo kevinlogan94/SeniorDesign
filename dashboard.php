@@ -37,15 +37,14 @@ else
     {
         echo nl2br("User Does Not Exist\n");
     }
-}
 
-$result = mysql_query("SELECT * FROM Charities WHERE (charity_owner = $username)");
+$result = mysql_query("SELECT * FROM Charities WHERE (charity_owner = '$username')");
 
 if ($result && mysql_num_rows($result) > 0) {
         print_r(mysql_fetch_assoc($result));
         echo "<br>";
 }
-
+}
 else {
 print nl2br("Database NOT Found.\n");
 print nl2br("$user->userid");
