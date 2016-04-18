@@ -18,20 +18,20 @@ $date = $year."-".$month."-".$day;
 $lat = 0;
 $lon = 0;
 
-echo nl2br("name = $name \n type = $type \n zip = $zip\n");
+//echo nl2br("name = $name \n type = $type \n zip = $zip\n");
 
 $db_handle = mysql_connect($server, $db_username, $db_password);
 if (!$db_handle) {
     die(mysql_error());
 }
-echo nl2br("Connected successfully\n");
+//echo nl2br("Connected successfully\n");
 $db_found = mysql_select_db($database, $db_handle);
 $data = mysql_query("SELECT * FROM Charities");
-while($row = mysql_fetch_assoc($data))
-{
-   print_r($row);
-   echo nl2br("\n");
-}
+//while($row = mysql_fetch_assoc($data))
+//{
+//   print_r($row);
+//   echo nl2br("\n");
+//}
 if ($db_found) {
    $data = mysql_query("SELECT * FROM zips WHERE zip_code=$zip");
    if($row = mysql_fetch_assoc($data)) {
@@ -47,7 +47,7 @@ if ($db_found) {
                             '$phone_main', '$description', '$date', '$owner', '$lat', '$lon')");
     $new_id = mysql_insert_id($db_handle);
     echo nl2br("Charity Registration Complete - id = $new_id\n");
-    $data = mysql_query("SELECT * FROM Charities");
+    /*$data = mysql_query("SELECT * FROM Charities");
     while($row = mysql_fetch_assoc($data))
     {
 	print_r($row);
@@ -67,7 +67,7 @@ if ($db_found) {
     {
 	print_r($row);
 	echo nl2br("\n");
-    }    
+    }  */  
 }
 else {
 print nl2br("Database NOT Found.\n");
