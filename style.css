@@ -12,14 +12,24 @@ Postconditions: CSS Styling on all the pages.
 	margin:20px 20px;
 	background-color:#ECF0F1;
 	padding:10px;
+	overflow:hidden;
 }
 
 .result img {
-	width:25%;
+	width:22%;
+	float:left;
+	padding:10px;
 }
 
 .result div {
-	width:75%;
+	width:70%;
+	padding:10px;
+	float:left;
+}
+
+.afternav {
+	float:left;
+	width:70%;
 }
 
 /*Above the fold for landing page*/
@@ -41,11 +51,23 @@ div.vert input[type=text] {
 	width:100%;
 }
 
+div.vert select {
+	margin-top:12px;
+}
+
+
+
 /*Checkbox Styling*/
 .checkdiv {
 	float:left;
 	width:25%;
 	margin-bottom:20px;
+	border-radius:5px;
+}
+
+.checkdiv:hover {
+	background-color:#ff5882;
+	color:#fff;
 }
 
 .checkbox-custom {
@@ -62,6 +84,7 @@ div.vert input[type=text] {
 
 .checkbox-custom-label {
 	position:relative;
+	width:95%;
 }
 
 .checkbox-custom + .checkbox-custom-label:before {
@@ -132,6 +155,7 @@ h2 {
   font-size:24pt;
   font-weight:bold;
   text-transform:uppercase;
+  margin:0;
 }
 
 /*Styling for bar under each h1 on newcharity, login.php, register.php, and passrecover.php*/
@@ -144,11 +168,18 @@ hr{
 nav {
     line-height:30px;
     height:300px;
-    width:100px;
+    width:20%;
     float:left;
     padding:20px;
 }
 
+
+.dashcontainer {
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+	max-width:600px;
+}
 
 /*Specific Styling for inputs on all pages*/
 input[type=text],input[type=password]{ 

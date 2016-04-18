@@ -31,7 +31,7 @@ Postconditions: Transition to the Search Results page.
     var ctr = 0;
 
     if (zipval == null || zipval == "" || zipval.length != 5) {
-        document.getElementById("ZipCode").innerHTML = "Please enter a valid 5 digit Zip Code.";
+        document.getElementById("ZipCode").innerHTML = "Please enter a valid 5 digit ZIP code.";
         document.getElementById("ZipCode").style.color = "red"
 	ctr++;
     }
@@ -84,7 +84,9 @@ Postconditions: Transition to the Search Results page.
     </select><br>
 </div>
 </div>
+<!--<img src="scrolldown.png" />-->
 </div>
+
 <div class="landing bottom">
     <p id="check"></p>
     <?php include 'listtags.php';?>

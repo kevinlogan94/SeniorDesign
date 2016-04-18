@@ -85,6 +85,7 @@ $results = mysql_query($query);
 }*/
 ?>
 <h1>Your Results</h1>
+<div class="resultsdiv">
 <nav>
 <div style='font-weight:bold;'>Filter by:<br></div>
 <form action="results.php" method="get">
@@ -102,10 +103,12 @@ while($row = mysql_fetch_assoc($data))
 <input type='checkbox' name="charity_filt" <?php if(isset($_GET['charity_filt'])) {echo "CHECKED";}?>>Charity<br>
 <input type='checkbox' name="program_filt" <?php if(isset($_GET['program_filt'])) {echo "CHECKED";}?>>Program<br>
 <input type='checkbox' name="event_filt" <?php if(isset($_GET['event_filt'])) {echo "CHECKED";}?>>Event
+<br>
 <input type="submit" value="Filter"><br><br>
 </form>
 </nav>
 <?php
+echo nl2br("<div class=\"afternav\">");
 while ($row = mysql_fetch_object($results)) {
 	echo nl2br("<div class=\"result\">");
 	if ($row->charity_type =="1"){
@@ -135,6 +138,7 @@ while ($row = mysql_fetch_object($results)) {
 	echo nl2br("</p>");
 	echo nl2br("</div></div>"); 
 }
+echo nl2br("</div></div>");
 mysql_free_result($data);
 }
 else {
