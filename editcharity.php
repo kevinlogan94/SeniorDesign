@@ -299,9 +299,14 @@ if ($username != $charity['charity_owner']) {
           {
               $checked = '';
           }
-     
-          echo nl2br("<input type='checkbox' name='$row->tag_name' $checked /> $row->tag_string");
-          echo nl2br("\n");
+
+        // echo "<div class=\"checkdiv\">
+        //<input class=\"checkbox-custom\" type=\"checkbox\" id=\"in".$row['tag_name']."\" name=\"".$row['tag_name']."\"  />
+        //<label class=\"checkbox-custom-label\" for=\"in".$row['tag_name']."\">".$row['tag_string']."</label>
+//</div>";
+          echo nl2br("<div class=\"checkdiv\">
+	<input id=\"in$row->tag_name\" class=\"checkbox-custom\" type=\"checkbox\" name='$row->tag_name' $checked /><label class=\"checkbox-custom-label\" for=\"in$row->tag_name\"> $row->tag_string </label></div>");
+          //echo nl2br("\n");
       }
 ?>
     <input type="hidden" name="id" value=<?php echo $id?>>

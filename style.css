@@ -9,21 +9,21 @@ Postconditions: CSS Styling on all the pages.
 
 /*Results Page */
 .result {
-	margin:20px 20px;
+	margin:20px 2%;
 	background-color:#ECF0F1;
-	padding:10px;
+	padding:10px 2%;
 	overflow:hidden;
 }
 
 .result img {
 	width:22%;
 	float:left;
-	padding:10px;
+	padding:10px 2%;
 }
 
 .result div {
 	width:70%;
-	padding:10px;
+	padding:10px 2%;
 	float:left;
 }
 
@@ -156,6 +156,7 @@ h2 {
   font-weight:bold;
   text-transform:uppercase;
   margin:0;
+  width:100%;
 }
 
 /*Styling for bar under each h1 on newcharity, login.php, register.php, and passrecover.php*/
@@ -174,6 +175,7 @@ nav {
 }
 
 
+/*Dashboard*/
 .dashcontainer {
 	width:80%;
 	margin-left:auto;

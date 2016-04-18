@@ -91,7 +91,10 @@ while ($row = mysql_fetch_object($result)) {
         }
         mysql_free_result($tags);
         echo nl2br("</p>");
-        echo nl2br("</div></div>");
+        echo nl2br("</div>");
+	echo nl2br("<div class=\"btn\"><a href=\"editcharity.php?id=$row->charity_id\">Edit</a></div>");
+	echo nl2br("<div class=\"btn\"><a href=\"deletecharity.php?id=$row->charity_id\">Delete</a></div>");
+	echo nl2br("</div>");
 }
 echo nl2br("</div>");
 }
@@ -101,11 +104,6 @@ mysql_close($db_handle);
 }
 
 ?>
-
-<!-- List User's name -->
-<!-- List charities according to owner -->
-
-<!-- while loop goes here -->
 <div style="display:inline;" class="btn" id="editbtn"><a href="#">Edit</a></div>
 <div style="display:inline;" class="btn" id="delbtn"><a href="#">Delete</a></div>
 <p><a href="newcharity.php">Create new event</a></p>
