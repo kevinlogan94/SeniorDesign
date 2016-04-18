@@ -121,7 +121,7 @@ $data = mysql_query("SELECT * FROM Tag");
  <!--REQUIRED FOR HEADER-->
  <div id="header"></div>
 <div class="newcharitybox">
-<form action="dashboard.php" method="post" name="myform" onsubmit="return validateForm()">
+<form action="processcharity.php" method="post" name="myform" onsubmit="return validateForm()">
   <fieldset>
     <h1>Register Your Charity/Event/Program</h1>
     <hr>

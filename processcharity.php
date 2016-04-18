@@ -47,12 +47,13 @@ if ($db_found) {
                             '$phone_main', '$description', '$date', '$owner', '$lat', '$lon')");
     $new_id = mysql_insert_id($db_handle);
     echo nl2br("Charity Registration Complete - id = $new_id\n");
+    header("location:dashboard.php");
     /*$data = mysql_query("SELECT * FROM Charities");
     while($row = mysql_fetch_assoc($data))
     {
 	print_r($row);
 	echo nl2br("\n");
-    }
+    }*/
     $data = mysql_query("SELECT * FROM Tag");
     while($row = mysql_fetch_assoc($data))
     {
@@ -62,7 +63,7 @@ if ($db_found) {
 				  (tag_id, charity_id) VALUES ('".$row['tag_id']."', '$new_id')");
 	}
     }
-    $data = mysql_query("SELECT * FROM Tag2Charity");
+    /*$data = mysql_query("SELECT * FROM Tag2Charity");
     while($row = mysql_fetch_assoc($data))
     {
 	print_r($row);
