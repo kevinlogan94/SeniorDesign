@@ -66,7 +66,7 @@ if ($username != $charity['charity_owner']) {
  <script>
 //insert header
  $(function(){
-   $("#header").load("header.html"); });
+   $("#header").load("header.php"); });
     /*
 	validateForm function
 	Purpose: Allow a user to submit their information or not based on whether the information is filled 

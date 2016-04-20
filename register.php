@@ -18,7 +18,7 @@ Postconditions: Page transition to their new dashboard. Account information inpu
   <!--REQUIRED FOR HEADER-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
-  $("#header").load("header.html"); });
+  $("#header").load("header.php"); });
 
    /*
         validateForm function

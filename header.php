@@ -8,6 +8,27 @@ Postconditions: Page transition to the landing page, registration page, or login
 -->
 
 <!DOCTYPE html>
+<?php
+$logged_in = False;
+unset($username);
+$secret_word = 'the horse raced past the barn fell';
+if ($_COOKIE['login']) {
+    list($c_username,$cookie_hash) = split(',',$_COOKIE['login']);
+    if (md5($c_username.$secret_word) == $cookie_hash) {
+        $username = $c_username;
+    } else {
+        print "You have sent a bad cookie.";
+    }
+}
+
+if ($username) {
+    $logged_in = True;
+}
+
+?>
+
+
+
 <html>
 <head>
  <!--set the tab name to Help Finder-->
@@ -88,7 +109,10 @@ li.dropdown { /*Set up the dropdown button for nonprofits*/
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">For Nonprofits</a>
     <div class="dropdown-content" id="myDropdown">
-      <a href="login.php">Login</a>
+<?php 
+if ($logged_in) { echo "<a href='logout.php'>Logout</a>"; }
+else 		{ echo "<a href='login.php'>Login</a>"; }
+?>
       <a href="register.php">Register</a>
       <a href="dashboard.php">Dashboard</a>
     </div>

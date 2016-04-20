@@ -17,7 +17,7 @@ Postconditions: User should receive an email including their password.
   <!--REQUIRED FOR HEADER-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
-  $("#header").load("header.html"); });
+  $("#header").load("header.php"); });
   
    /*Form Validation Function
      Purpose: Checks to make sure the user has inputted a valid email address in order to submit. 
