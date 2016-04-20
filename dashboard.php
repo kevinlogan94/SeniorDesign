@@ -104,8 +104,6 @@ mysql_close($db_handle);
 }
 
 ?>
-<div style="display:inline;" class="btn" id="editbtn"><a href="#">Edit</a></div>
-<div style="display:inline;" class="btn" id="delbtn"><a href="#">Delete</a></div>
 <p><a href="newcharity.php">Create new event</a></p>
 
 </body>

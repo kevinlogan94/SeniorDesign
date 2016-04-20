@@ -57,7 +57,10 @@ if ($username != $charity['charity_owner']) {
 <head>
  <link rel="stylesheet" type="text/css" href="style.css">
  <title>Register Charity/Event/Program</title>
- <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ <!--MOBILE-->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" type="text/css" href="style.css">
+ <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
  <!--REQUIRED FOR HEADER-->
  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
  <script>
@@ -278,7 +281,7 @@ if ($username != $charity['charity_owner']) {
     Zip Code: <p style="display:inline" id="ZipCode"></p><br>
     <input type="text" name="ZipCode"  size="5" value="<?php echo $charity['zip_code'];?>" 
 		onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
-    Contact Phone Number: <p style="display:inline" id="phone"></p><p style="display:inline" id="area"></p><br> 
+    Contact Phone Number: <p style="display:inline" id="Phone"></p><p style="display:inline" id="Area"></p><br> 
     <input type="text" name="Area" placeholder="###" size="2" value="<?php echo $charity['phone_area'];?>" 
 		onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
     - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="7" 
@@ -287,7 +290,7 @@ if ($username != $charity['charity_owner']) {
     Description: <p style="display:inline" id="Description"></p><br>
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"><?php echo $charity['charity_description'];?></textarea><br><br>
 
-    <p  id="check"></p>
+    Tags Related:<p style="display:inline" id="check"></p><br>
  <?php while($row = mysql_fetch_object($data))
       {
           $t2c = mysql_query("SELECT * FROM Tag2Charity WHERE (charity_id = $id) AND (tag_id = $row->tag_id)");
