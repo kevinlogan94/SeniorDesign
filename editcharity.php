@@ -117,7 +117,7 @@ if ($username != $charity['charity_owner']) {
 	    document.getElementById(inputs[i]).innerHTML = "";
 	}
      }
-     //if a check box is checked or not. 
+      //if a checkbox is filled out write error message otherwise leave it blank.
       if ($("input[type='checkbox']").is(":checked"))
       {
          document.getElementById("check").innerHTML = "";

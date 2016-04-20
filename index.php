@@ -40,7 +40,7 @@ Postconditions: Transition to the Search Results page.
 	document.getElementById("ZipCode").innerHTML = "";
     }
 
-      //if a checkbox is filled out or not.
+      //if a checkbox is filled out write error message otherwise leave it blank.
     if ($("input[type='checkbox']").is(":checked"))
     {
        document.getElementById("check").innerHTML = "";
@@ -48,7 +48,7 @@ Postconditions: Transition to the Search Results page.
     else
     {
       ctr++;
-      document.getElementById("check").innerHTML = "You must click a checkbox.";
+      document.getElementById("check").innerHTML = " You must click a checkbox.";
       document.getElementById("check").style.color = "red"
     }
 
@@ -88,7 +88,7 @@ Postconditions: Transition to the Search Results page.
 </div>
 
 <div class="landing bottom">
-    <p id="check"></p>
+    Search Tags:<p style="display:inline" id="check"></p><br>
     <?php include 'listtags.php';?>
     <input type="submit" value="Submit"><br><br>
 </form>
