@@ -291,9 +291,9 @@ if ($username != $charity['charity_owner']) {
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"><?php echo $charity['charity_description'];?></textarea><br><br>
 
     Tags Related:<p style="display:inline" id="check"></p><br>
- <?php while($row = mysql_fetch_object($data))
+ <?php while($row = mysql_fetch_assoc($data))
       {
-          $t2c = mysql_query("SELECT * FROM Tag2Charity WHERE (charity_id = $id) AND (tag_id = $row->tag_id)");
+          $t2c = mysql_query("SELECT * FROM Tag2Charity WHERE (charity_id=$id) AND (tag_id=".$row['tag_id'].")");
           if ($t2c && mysql_num_rows($t2c) > 0)
           {
 	      $checked = 'checked';
@@ -302,14 +302,12 @@ if ($username != $charity['charity_owner']) {
           {
               $checked = '';
           }
-
-        // echo "<div class=\"checkdiv\">
-        //<input class=\"checkbox-custom\" type=\"checkbox\" id=\"in".$row['tag_name']."\" name=\"".$row['tag_name']."\"  />
-        //<label class=\"checkbox-custom-label\" for=\"in".$row['tag_name']."\">".$row['tag_string']."</label>
-//</div>";
-          echo nl2br("<div class=\"checkdiv\">
-	<input id=\"in$row->tag_name\" class=\"checkbox-custom\" type=\"checkbox\" name='$row->tag_name' $checked /><label class=\"checkbox-custom-label\" for=\"in$row->tag_name\"> $row->tag_string </label></div>");
-          //echo nl2br("\n");
+          echo "<div class=\"checkdiv\">
+                <input class=\"checkbox-custom\" type=\"checkbox\" id=\"in".$row['tag_name']."\" 
+                name=\"".$row['tag_name']."\" $checked />
+                <label class=\"checkbox-custom-label\" 
+                for=\"in".$row['tag_name']."\">".$row['tag_string']."</label>
+                </div>";
       }
 ?>
     <input type="hidden" name="id" value=<?php echo $id?>>

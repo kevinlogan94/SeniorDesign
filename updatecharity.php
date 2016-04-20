@@ -10,7 +10,6 @@ $zip = $_POST['ZipCode'];
 $phone_area = $_POST['Area'];
 $phone_main = $_POST['Phone'];
 $description = $_POST['Description'];
-$owner = $_POST['owner'];
 $day = $_POST['day'];
 $month = $_POST['month'];
 $year = $_POST['year'];
@@ -63,7 +62,7 @@ if ($db_found) {
 			   charity_type='$type', charity_name='$name', street_address='$address', 
 			   city_name='$city', state_abrev='$state', zip_code='$zip', phone_area='$phone_area', 
                            phone_main='$phone_main', charity_description='$description', start_date='$date',
-                           charity_owner='$owner', lat='$lat', lon='$lon'
+                           charity_owner='$username', lat='$lat', lon='$lon'
 			   WHERE charity_id='$id'");
     mysql_query("DELETE FROM Tag2Charity WHERE charity_id='$id'");
     $data = mysql_query("SELECT * FROM Tag");
