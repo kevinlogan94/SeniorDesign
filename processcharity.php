@@ -58,7 +58,7 @@ if ($db_found) {
     
     // gets the id of the newly inserted row
     $new_id = mysql_insert_id($db_handle);
-    
+    echo $new_id;
     // gets a list of all tags
     $data = mysql_query("SELECT * FROM Tag");
     while($row = mysql_fetch_assoc($data)) // for each tag in the list
