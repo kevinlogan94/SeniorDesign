@@ -44,7 +44,8 @@ Postconditions: User should receive an email including their password.
 
 <div class="passrecoverbox">
 <h1>Recover Password</h1>
-<?php 
+<?php
+    // checks to see if there is an error message to handle and, if so, displays the message 
     session_start();
     if (!empty($_SESSION['recover_error_msg'])) {
         echo "<div style=\"color: red; text-align: center;\">Error: ".$_SESSION['recover_error_msg']."</div>";

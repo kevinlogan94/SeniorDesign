@@ -9,6 +9,7 @@ Postconditions: Page transition back to their new dashboard. Password updated in
 <!DOCTYPE html>
 <?php 
 
+// Check to see if the user has a login cookie using the secret word to make sure it isnt fake
 unset($username);
 $secret_word = 'the horse raced past the barn fell';
 if ($_COOKIE['login']) {
@@ -19,7 +20,7 @@ if ($_COOKIE['login']) {
         print "You have sent a bad cookie.";
     }
 }
-else {
+else { //user isnt logged in so return to login page
      session_start();
     $_SESSION['alert'] = "You are not logged on";
     header('location:login.php');
@@ -86,6 +87,7 @@ else {
 <div class="passrecoverbox">
  <h1>Change Password</h1>
  <?php 
+    // if there is an error message in the session, display the message
     session_start();
     if (!empty($_SESSION['password_error_msg'])) {
         echo "<div style=\"color: red; text-align: center;\">Error: ".$_SESSION['password_error_msg']."</div>";

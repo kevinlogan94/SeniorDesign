@@ -7,9 +7,7 @@ Nonprofit Organization Search Website
 
 Files include:
 
-access.php
-
-check.php - File pulls the specific checkboxes out of the databases. Included on landing and create new event/charity/program page.
+access.php - File handles submission of login form
 
 dashboard.php - File for the Dashboard. Page that allows organizations to edit, delete, and create events/programs/charities.
 
@@ -17,11 +15,11 @@ databaselogin.php - Individual file for each group member to include database lo
 
 dump.sql - Creates the required tables.
 
-editcharity.php
+editcharity.php - Form that allows user to edit their charities 
 
 event.php - Page for individual event information.
 
-header.html - File included in each page of the website. Allows each page to have a header at the top.
+header.php - File included in each page of the website. Allows each page to have a header at the top.
 
 index.php - Main Landing page file for the site.
 
@@ -39,7 +37,7 @@ newcharity.php - File for the create new event/program/charity page.
 
 passrecover.php - File for the password recovery page
 
-processcharity.php
+processcharity.php - File that handles sumission of the new charity form
 
 publicuserpage.php - Public page for users to see all of the events/charities/programs for a single registered nonprofit.
 
@@ -53,4 +51,3 @@ results.php - Page listing results for user from home page.
 
 style.css - Main css file used for the overall styling of the website.
 
-validate.php

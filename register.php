@@ -103,6 +103,7 @@ Postconditions: Page transition to their new dashboard. Account information inpu
 <div class="registerbox">
  <h1>Register</h1>
  <?php 
+    // checks if there is an error message to handle. If so, display to screen
     session_start();
     if (!empty($_SESSION['register_error_msg'])) {
         echo "<div style=\"color: red; text-align: center;\">Error: ".$_SESSION['register_error_msg']."</div>";

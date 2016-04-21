@@ -1,60 +1,71 @@
 <!--
-Prolog: newcharity.php
+Prolog: editcharity.php
 
-Purpose: Page that allows a user to create a new event/program/charity.	
-Preconditions: Input a name, date(if applicable), address, city, zip code, description, state, contact phone number,
-	and tags associated with this. 
-Postconditions: Users new event/program/charity is put into the database. Page transition to the dashboard page.
+Purpose: Page that allows a user to edit one of their events/programs/charities.	
+Preconditions: Input an id of a charity and user is logged in as the owner of the charity
+Postconditions: Form is submitted to updatecharity which performs the update operations
 -->
 <?php
- include 'databaselogin.php';
-$id = $_GET['id'];
- $db_handle = mysql_connect($server, $db_username, $db_password);
- if (!$db_handle) {
-    die(mysql_error());
- }
-$db_found = mysql_select_db($database, $db_handle);
- 
-$charity = mysql_query("SELECT * FROM Charities WHERE (charity_id = '$id')");
+include 'databaselogin.php';
 
-if ($charity && mysql_num_rows($charity) > 0)
+$id = $_GET['id'];
+
+$db_handle = mysql_connect($server, $db_username, $db_password);
+if (!$db_handle) {
+    die(mysql_error());
+}
+$db_found = mysql_select_db($database, $db_handle);
+if($db_found) {
+    // get the charity which has the specified id
+    $charity = mysql_query("SELECT * FROM Charities WHERE (charity_id = '$id')");
+
+    // if it matches, extract array
+    if ($charity && mysql_num_rows($charity) > 0)
     {
 	$charity = mysql_fetch_assoc($charity);
+        // get the date of the charity
 	$time = strtotime($charity['start_date']);
-	if (date('y', $time) != -1) {
+	if (date('y', $time) != -1) { // the date is valid
 	    $year = date('Y', $time);
             $month = date('m', $time);
             $day  = date('d', $time);
-	} else {
+	} else { // date is invalid because the date is unspecified
 	    $year = "0000";
             $month = "00";
             $day = "00";
         }
     }
-else
+    else
     {
-    session_start();
-    $_SESSION['alert'] = "The charity does not exist";
-    header('location:dashboard.php');
+        session_start();
+        $_SESSION['alert'] = "The charity does not exist";
+        header('location:dashboard.php');
     }
-unset($username);
-$secret_word = 'the horse raced past the barn fell';
-if ($_COOKIE['login']) {
-    list($c_username,$cookie_hash) = split(',',$_COOKIE['login']);
-    if (md5($c_username.$secret_word) == $cookie_hash) {
-        $username = $c_username;
-    } else {
-        print "You have sent a bad cookie.";
+    
+    // checl if user is logged in as owner of the charity
+    unset($username);
+    $secret_word = 'the horse raced past the barn fell';
+    if ($_COOKIE['login']) {
+        list($c_username,$cookie_hash) = split(',',$_COOKIE['login']);
+        if (md5($c_username.$secret_word) == $cookie_hash) {
+            $username = $c_username;
+        } else {
+            print "You have sent a bad cookie.";
+        }
     }
-}
 
-if ($username != $charity['charity_owner']) {
-    session_start();
-    $_SESSION['alert'] = "You do not have permission to do that";
-    header('location:dashboard.php');
-}
+    if ($username != $charity['charity_owner']) {
+        session_start();
+        $_SESSION['alert'] = "You do not have permission to do that";
+        header('location:dashboard.php');
+    }
 
-$data = mysql_query("SELECT * FROM Tag");
+    // get list of tags for later
+    $data = mysql_query("SELECT * FROM Tag");
+}
+else {
+    die(mysql_error());
+}
 ?>
 
 <head>
@@ -149,6 +160,7 @@ $data = mysql_query("SELECT * FROM Tag");
 <form action="updatecharity.php" method="post" name="myform" onsubmit="return validateForm()">
   <fieldset>
     <h1>Edit Your Charity/Event/Program</h1>
+ <!-- Uses php to fill the form with the current values-->
     <hr>
     Event Type:<br>
     <select id="dropdowntextarea" name="type">
@@ -294,10 +306,13 @@ $data = mysql_query("SELECT * FROM Tag");
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"><?php echo $charity['charity_description'];?></textarea><br><br>
 
     Tags Related:<p style="display:inline" id="check"></p><br>
- <?php while($row = mysql_fetch_assoc($data))
+ <?php
+      // for each tage make a check box input  
+      while($row = mysql_fetch_assoc($data))
       {
+          // look for any links between the current tag and the charity
           $t2c = mysql_query("SELECT * FROM Tag2Charity WHERE (charity_id=$id) AND (tag_id=".$row['tag_id'].")");
-          if ($t2c && mysql_num_rows($t2c) > 0)
+          if ($t2c && mysql_num_rows($t2c) > 0) // if there is a match this check box should be checked
           {
 	      $checked = 'checked';
           }

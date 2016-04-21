@@ -8,6 +8,9 @@ Postconditions: User is transitioned into their own personal user dashboard. Oth
 -->
 
 <?php
+
+// checks to see if the user is aready logged on. If so, it sets boolean flag wich is used to 
+// display a logout button instead of the login form.
 $logged_in = False;
 unset($username);
 $secret_word = 'the horse raced past the barn fell';
@@ -75,6 +78,7 @@ if ($username) {
 <div class="box">
  <h1>Login</h1>
 <?php 
+    // checks if there is an error message to handle. if so, it displays the message
     session_start();
     if (!empty($_SESSION['login_error_msg'])) {
         echo "<div style=\"color: red; text-align: center;\">Error: ".$_SESSION['login_error_msg']."</div>";

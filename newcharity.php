@@ -2,13 +2,15 @@
 Prolog: newcharity.php
 
 Purpose: Page that allows a user to create a new event/program/charity.	
-Preconditions: Input a name, date(if applicable), address, city, zip code, description, state, contact phone number,
-	and tags associated with this. 
+Preconditions: Input a name, date(if applicable), address, city, zip code, 
+description, state, contact phone numbe	and tags associated with this. 
 Postconditions: Users new event/program/charity is put into the database. Page transition to the dashboard page.
 -->
 
 <?php
 include 'databaselogin.php';
+
+// make sure the user is logged in
 unset($username);
 $secret_word = 'the horse raced past the barn fell';
 if ($_COOKIE['login']) {
@@ -20,6 +22,7 @@ if ($_COOKIE['login']) {
     }
 }
 
+// if not return to login page
 if (!$username) {
     session_start();
     $_SESSION['alert'] = "You are not logged on";

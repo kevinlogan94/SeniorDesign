@@ -9,6 +9,8 @@ Postconditions: Page transition to the landing page, registration page, or login
 
 <!DOCTYPE html>
 <?php
+
+// checks to see if the user is logged in. If they are, the login button is replaced by a logout button
 $logged_in = False;
 unset($username);
 $secret_word = 'the horse raced past the barn fell';
@@ -25,6 +27,7 @@ if ($username) {
     $logged_in = True;
 }
 
+// checks to see if any alerts have been created and if so, it displays them
 session_start();
 if (!empty($_SESSION['alert'])) {
         echo "<script language='javascript'>";

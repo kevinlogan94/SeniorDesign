@@ -1,3 +1,12 @@
+<!--
+Prolog: dashboard.php
+
+Purpose: This is the main hub for the user. It allows them to access all their charities 
+as well as all user functions.
+Preconditions: The user is logged in with a valid username 
+-->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +28,7 @@
 <?php
 include 'databaselogin.php';
 
+// check to see if the user is logged in
 unset($username);
 $secret_word = 'the horse raced past the barn fell';
 if ($_COOKIE['login']) {
@@ -30,10 +40,9 @@ if ($_COOKIE['login']) {
     }
 }
 
-if ($username) {
-    	echo nl2br("<h1>Welcome, $username.</h1>");
-	//print "Welcome, $username. ";
-} else {
+if ($username) { // user is logged on
+    echo nl2br("<h1>Welcome, $username.</h1>");
+} else { // return to login page
     session_start();
     $_SESSION['alert'] = "You are not logged on";
     header('location:login.php');
@@ -41,27 +50,31 @@ if ($username) {
 
 $db_handle = mysql_connect($server, $db_username, $db_password);
 if (!$db_handle) {
-die(mysql_error());
+    die(mysql_error());
 }
 
 $db_found = mysql_select_db($database, $db_handle);
 if ($db_found) {
-$result = mysql_query("SELECT * FROM Logins WHERE (username = '$username')");
 
+    // Find the user in the database that matches the logged in username
+    $result = mysql_query("SELECT * FROM Logins WHERE (username = '$username')");
+    // if there is a match, get the array from the query
     if ($result && mysql_num_rows($result) > 0)
     {
         $user = mysql_fetch_assoc($result);
     }
-    else
+    else // otherwise return to login (this shouldn't be able to happen but its here just in case) 
     {
         session_start();
         $_SESSION['alert'] = "You are not logged on";
         header('location:login.php');
 
     }
+    // find all charities that are owned by the user
     $result = mysql_query("SELECT * FROM Charities WHERE (charity_owner = '$username')");
 
     echo nl2br("<div class=\"dashcontainer\">");
+    // for each row in the result, print the information to the screen
     while ($row = mysql_fetch_object($result)) {
         echo nl2br("<div class=\"result\">");
         if ($row->charity_type =="1"){

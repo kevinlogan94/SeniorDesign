@@ -1,3 +1,11 @@
+<!--
+Prolog: results.php
+Purpose: Page that displays results of the seach form on index.php
+Preconditions: Input a zip code, maximum distance, and list of tags
+Postconditions: Displays a list of charities withing the range of the zip code that match one or more tags.
+Results are sorted by number of matched tags.
+-->
+
 <html>
 <head>
 <!--MOBILE-->
@@ -20,39 +28,45 @@ utf8_decode();
 $ZIP = $_GET['ZipCode'];
 $distance = $_GET['formDistance'];
 
-//echo nl2br("ZIP = $ZIP \n distance = $distance miles\n");
 
 $db_handle = mysql_connect($server, $db_username, $db_password);
 if (!$db_handle) {
     die(mysql_error());
 }
-//echo nl2br("Connected successfully\n");
-$db_found = mysql_select_db($database, $db_handle);
 
-if ($db_found) {
-$data = mysql_query("SELECT * FROM zips WHERE zip_code = $ZIP");
-if($row = mysql_fetch_assoc($data)) {
-    $orig_lat = $row['lat'];
-    $orig_lon = $row['lon'];
-    $lat_upper = $orig_lat + ($distance/69);
-    $lat_lower = $orig_lat - ($distance/69);
-    $lon_upper = $orig_lon + ($distance/abs(cos(deg2rad($orig_lat))*69));
-    $lon_lower = $orig_lon - ($distance/abs(cos(deg2rad($orig_lat))*69));
+$db_found = mysql_select_db($database, $db_handle);
+if ($db_found) {i
+    // finds the zip code data for the specified zip code
+    $data = mysql_query("SELECT * FROM zips WHERE zip_code = $ZIP");
+    if($row = mysql_fetch_assoc($data)) { // if there is a match
+        $orig_lat = $row['lat'];
+        $orig_lon = $row['lon'];
+        // 1 degree of latitude is ~= 69 miles so the range of latitudes is +- distance/69
+        $lat_upper = $orig_lat + ($distance/69);
+        $lat_lower = $orig_lat - ($distance/69);
+        // 1 degree of longitude is ~= cos(latitude)*69, so range of longitude is +- distance/(|cos(lat)*69|) 
+        $lon_upper = $orig_lon + ($distance/abs(cos(deg2rad($orig_lat))*69));
+        $lon_lower = $orig_lon - ($distance/abs(cos(deg2rad($orig_lat))*69));
 }
 
+//start of building query. Finds a charity and joins it with links associated with charity
 $query = "SELECT c.* FROM Charities c INNER JOIN Tag2Charity t2c ON c.charity_id = t2c.charity_id WHERE (";
 $first = True;
 
+// gets list of tags
 $data = mysql_query("SELECT * FROM Tag");
-while($row = mysql_fetch_assoc($data))
+while($row = mysql_fetch_assoc($data)) // for each tag
 {
-    if(isset($_GET[$row['tag_name']])) {
+    if(isset($_GET[$row['tag_name']])) { // if tag was checked
         if (!$first) {$query .= " OR ";}
-        $query .= "(t2c.tag_id = ".$row['tag_id'].")";
+        // add to query that there must be a link between charity and the tag
+        $query .= "(t2c.tag_id = ".$row['tag_id'].")"; 
         $first = False;
     } 
 }
 $first = True;
+
+// if there is a filter by a type of charity, add a requirement that results must be one of the filtered types
 if(isset($_GET['charity_filt'])) {
 	$query .= ") AND (c.charity_type=1";
 	$first = False;
@@ -74,28 +88,31 @@ if(isset($_GET['event_filt'])) {
         }
 }
 
+// finally add that lat and lon must be within the calculated range. Charities that match more than
+// one tag are listed multiple times, so group the duplicates and sort by number of times it appeared
+// in the list
 $query .= ") AND (c.lat BETWEEN $lat_lower AND $lat_upper) AND (c.lon BETWEEN $lon_lower AND $lon_upper) 
            GROUP BY c.charity_id ORDER BY count(*) DESC";
-//echo nl2br("$query\n");
+
+// get the results by making the query
 $results = mysql_query($query);
-/*while ($row = mysql_fetch_assoc($data))
-{
-	print_r($row);
-	echo nl2br("\n");
-}*/
 ?>
 <h1>Your Results</h1>
 <div class="resultsdiv">
 <nav>
 <div style='font-weight:bold;'>Filter by:<br></div>
+
+<!-- Form for filtering. All current form data is resubmitted as hidden inputs -->
 <form action="results.php" method="get">
 <input type='hidden' name="ZipCode" value='<?php echo $ZIP?>'>
 <input type='hidden' name="formDistance" value='<?php echo $distance?>'>
 <?php
+// gets all tags
 $data = mysql_query("SELECT * FROM Tag");
-while($row = mysql_fetch_assoc($data))
+while($row = mysql_fetch_assoc($data)) // for each tag
 {
-    if(isset($_GET[$row['tag_name']])) {
+    if(isset($_GET[$row['tag_name']])) { // if tags was selected
+        // creates hidden input for tag
         echo nl2br("<input type='hidden' name='".$row['tag_name']."' value='on'>");
     }
 }
@@ -108,8 +125,9 @@ while($row = mysql_fetch_assoc($data))
 </form>
 </nav>
 <?php
+// prints results 
 echo nl2br("<div class=\"afternav\">");
-while ($row = mysql_fetch_object($results)) {
+while ($row = mysql_fetch_object($results)) { // for each result, display the information
 	echo nl2br("<div class=\"result\">");
 	if ($row->charity_type =="1"){
 		echo nl2br("<img src=\"charity.png\"/>");
@@ -122,6 +140,7 @@ while ($row = mysql_fetch_object($results)) {
 	echo nl2br("<p>$row->street_address, $row->city_name, $row->state_abrev $row->zip_code</p>");
 	echo nl2br("<p>$row->phone_area-$row->phone_main</p>");
 	echo nl2br("<p>$row->charity_description</p>");
+        // gets all tags linked to the charity
 	$tags = mysql_query("SELECT t.* FROM Tag t INNER JOIN Tag2Charity t2c ON t.tag_id = t2c.tag_id 
                              WHERE (t2c.charity_id = $row->charity_id)");
         echo nl2br("<p>Tags: ");
