@@ -21,6 +21,8 @@ if ($_COOKIE['login']) {
 }
 
 if (!$username) {
+    session_start();
+    $_SESSION['alert'] = "You are not logged on";
     header('location:login.php');
 }
 
@@ -268,7 +270,6 @@ $data = mysql_query("SELECT * FROM Tag");
     <?php include 'listtags.php';?>
 
     <br>
-    <input type="hidden" name="owner" value="<?php echo $username; ?>">
     <input type="submit" value="Submit">
   </fieldset>
 </div>

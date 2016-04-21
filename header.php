@@ -25,6 +25,14 @@ if ($username) {
     $logged_in = True;
 }
 
+session_start();
+if (!empty($_SESSION['alert'])) {
+        echo "<script language='javascript'>";
+        echo "alert(\"".$_SESSION['alert']."\")";  //not showing an alert box.
+        echo "</script>";
+        unset($_SESSION['alert']);
+}
+
 ?>
 
 

@@ -28,7 +28,9 @@ if ($db_found) {
 //Send the email!
 
         mail($email,$email_subject,$email_body,$headers);
-//done. redirect to login page. 
+//done. redirect to login page with alert.i
+        session_start();
+        $_SESSION['alert'] = "An email has been sent to the specified email address";
         header('Location: login.php');
     } else {
       	session_start();

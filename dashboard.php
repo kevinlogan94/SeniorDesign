@@ -34,6 +34,8 @@ if ($username) {
     	echo nl2br("<h1>Welcome, $username.</h1>");
 	//print "Welcome, $username. ";
 } else {
+    session_start();
+    $_SESSION['alert'] = "You are not logged on";
     header('location:login.php');
 }
 
@@ -41,30 +43,26 @@ $db_handle = mysql_connect($server, $db_username, $db_password);
 if (!$db_handle) {
 die(mysql_error());
 }
-//echo nl2br("Connected successfully\n");
+
 $db_found = mysql_select_db($database, $db_handle);
 if ($db_found) {
 $result = mysql_query("SELECT * FROM Logins WHERE (username = '$username')");
 
-if ($result && mysql_num_rows($result) > 0)
-
+    if ($result && mysql_num_rows($result) > 0)
     {
         $user = mysql_fetch_assoc($result);
-        //print_r($user);
     }
-else
+    else
     {
-        echo nl2br("User Does Not Exist\n");
+        session_start();
+        $_SESSION['alert'] = "You are not logged on";
+        header('location:login.php');
+
     }
+    $result = mysql_query("SELECT * FROM Charities WHERE (charity_owner = '$username')");
 
-$result = mysql_query("SELECT * FROM Charities WHERE (charity_owner = '$username')");
-
-/*if ($result && mysql_num_rows($result) > 0) {
-        print_r(mysql_fetch_assoc($result));
-        echo "<br>";
-}*/
-echo nl2br("<div class=\"dashcontainer\">");
-while ($row = mysql_fetch_object($result)) {
+    echo nl2br("<div class=\"dashcontainer\">");
+    while ($row = mysql_fetch_object($result)) {
         echo nl2br("<div class=\"result\">");
         if ($row->charity_type =="1"){
                 echo nl2br("<img src=\"charity.png\"/>");
@@ -95,12 +93,12 @@ while ($row = mysql_fetch_object($result)) {
 	echo nl2br("<div class=\"btn\"><a href=\"editcharity.php?id=$row->charity_id\">Edit</a></div>");
 	echo nl2br("<div class=\"btn\"><a href=\"deletecharity.php?id=$row->charity_id\">Delete</a></div>");
 	echo nl2br("</div>");
-}
-echo nl2br("</div>");
+    }
+    echo nl2br("</div>");
 }
 else {
-print nl2br("Database NOT Found.\n");
-mysql_close($db_handle);
+    print nl2br("Database NOT Found.\n");
+    mysql_close($db_handle);
 }
 
 ?>

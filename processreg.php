@@ -17,19 +17,22 @@ if (!$db_handle) {
 $db_found = mysql_select_db($database, $db_handle);
 
 if ($db_found) {
-$result = mysql_query("SELECT * FROM Logins WHERE (username = '$username') OR (email = '$email')");
+    $result = mysql_query("SELECT * FROM Logins WHERE (username = '$username') OR (email = '$email')");
 
-if ($result && mysql_num_rows($result) > 0)
-
+    if ($result && mysql_num_rows($result) > 0)
     {
       	session_start();
     	$_SESSION['register_error_msg'] = "An account is already linked to that username or email address";
 	header('location:register.php');
     }
-else
+    else
     {
 	$result = mysql_query("INSERT INTO Logins (username, password, email, contact_name, contact_number) 
 					VALUES ('$username', '$password', '$email', '$fullname', '$phone')");
+
+        session_start();
+        $_SESSION['alert'] = "Your account has been registered";
+
 	header('location:login.php');
     }
 }

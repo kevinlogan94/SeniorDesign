@@ -33,8 +33,11 @@ if ($db_found) {
 	$charity = mysql_fetch_assoc($charity);
     }
     else
-    {
-        header('location:dashboard.php');
+    { 
+         session_start();
+         $_SESSION['alert'] = "The charity does not exist";
+
+         header('location:dashboard.php');
     }
 
     unset($username);
@@ -49,6 +52,8 @@ if ($db_found) {
     }
 
     if ($username != $charity['charity_owner']) {
+        session_start();
+        $_SESSION['alert'] = "You do not have permission to do that";
         header('location:dashboard.php');
     }
 
@@ -73,6 +78,10 @@ if ($db_found) {
 				  (tag_id, charity_id) VALUES ('".$row['tag_id']."', '$id')");
 	}
     }
+
+    session_start();
+    $_SESSION['alert'] = "Your charity has been updated";
+    
     header('location:dashboard.php'); 
 }
 else {

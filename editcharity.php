@@ -33,7 +33,9 @@ if ($charity && mysql_num_rows($charity) > 0)
     }
 else
     {
-        header('location:dashboard.php');
+    session_start();
+    $_SESSION['alert'] = "The charity does not exist";
+    header('location:dashboard.php');
     }
 unset($username);
 $secret_word = 'the horse raced past the barn fell';
@@ -47,12 +49,13 @@ if ($_COOKIE['login']) {
 }
 
 if ($username != $charity['charity_owner']) {
-   header('location:dashboard.php');
+    session_start();
+    $_SESSION['alert'] = "You do not have permission to do that";
+    header('location:dashboard.php');
 }
 
-
- $data = mysql_query("SELECT * FROM Tag");
- ?>
+$data = mysql_query("SELECT * FROM Tag");
+?>
 
 <head>
  <link rel="stylesheet" type="text/css" href="style.css">
