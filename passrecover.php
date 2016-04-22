@@ -30,9 +30,13 @@ Postconditions: User should receive an email including their password.
      var atpos = emailval.indexOf("@");
      var dotpos = emailval.lastIndexOf(".");
      if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailval.length) {
-        alert("Not a valid e-mail address");
+	document.getElementById("formerror").innerHTML = "Please enter a valid email address.";  
+        document.getElementById("formerror").style.color = "red";        
         return false;
      } 
+     else {
+	document.getElementById("formerror").innerHTML = "";  
+     }
    }
    
    </script>
@@ -55,6 +59,7 @@ Postconditions: User should receive an email including their password.
 <!--Set up form form to receive email for password recovery-->
 <form name="myform" action="processrecovery.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
+   <p id="formerror"></p>
    <hr>
    <label id="icon" for="name"><i class="icon-user"></i></label>
    <input type="text" name="email" placeholder="Email Address"><br><br>

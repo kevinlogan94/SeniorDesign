@@ -251,6 +251,17 @@ fieldset {
   border: solid 1px #cbc9c9;
 }
 
+/*Box surrounding the form on changepassword.php*/
+.passchangebox {
+  margin: 20px auto;
+  width: 400px;
+  height: 450px;
+  border-radius: 8px/7px;
+  background-color: #ebebeb;
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+  border: solid 1px #cbc9c9;
+}
+
 /*Box surrounding the form on newcharity.php */
 .newcharitybox {
   margin: 20px auto;

@@ -115,6 +115,7 @@ else {
 }
 
 ?>
+<p><a href="changepassword.php">Change Password</a></p> 
 <p><a href="newcharity.php">Create new event</a></p>
 
 </body>

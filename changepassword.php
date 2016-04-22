@@ -49,42 +49,33 @@ else { //user isnt logged in so return to login page
    function validateForm() {
     
      var inputs = ["old_password", "new_password"];
-     var ctr = 0;     
      for (i = 0; i < inputs.length; i++) {
 
 	var value = document.forms["myform"][inputs[i]].value;
 	if (value == "" || value == null) {
-         	ctr++;
-               	document.getElementById(inputs[i]).innerHTML = " Input Required";
-               	document.getElementById(inputs[i]).style.color = "red";
+		document.getElementById("formerror").innerHTML = "Provide a current and new password.";
+		document.getElementById("formerror").style.color = "red";
+		return false;
 	}
 	else if (inputs[i] == "new_password"){
 		var confpassval = document.forms["myform"]["confpass"].value;
 		if(value != confpassval) {
-			ctr++;
-			document.getElementById(inputs[i]).innerHTML = " Password doesn't match.";
-			document.getElementById(inputs[i]).style.color = "red";
+			document.getElementById("formerror").innerHTML = "New password doesn't match";	
+			document.getElementById("formerror").style.color = "red";
+			return false;
 		}
-		else {
-			document.getElementById(inputs[i]).innerHTML = "";
-		}
-		
-	}
-	else {
-		document.getElementById(inputs[i]).innerHTML = "";
         }
+	else {
+		document.getElementById("formerror").innerHTML = "";
+	}   
+      }
     }
-    if (ctr > 0) {
-      return false;
-        }   
-    }
-
    </script>
 </head>
 <body>
  <!--REQUIRED FOR HEADER-->
  <div id="header"></div>
-<div class="passrecoverbox">
+<div class="passchangebox">
  <h1>Change Password</h1>
  <?php 
     // if there is an error message in the session, display the message
@@ -95,16 +86,15 @@ else { //user isnt logged in so return to login page
     }
  ?>
  <form name="myform" action="updatepassword.php" method="post" onsubmit="return validateForm()">
-  
+  <fieldset align="center">
+  <p id="formerror"></p>
   <hr>
     <label id="icon"><i class="icon-key"></i></label>  
     <input type="password" name="old_password" placeholder="Current Password"><br>
     <label id="icon"><i class="icon-key"></i></label>  
     <input type="password" name="new_password" placeholder="New Password"><br>
     <label id="icon"><i class="icon-shield"></i></label>
-    <input type="password" name="confpass" placeholder="Retype Password">
-    <p  id="password"></p>
-    <br>
+    <input type="password" name="confpass" placeholder="Retype Password"><br><br>
     <input id="shift" type="submit" value="Submit">
  </form>
  </div>
