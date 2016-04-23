@@ -277,8 +277,8 @@ $data = mysql_query("SELECT * FROM Tag");
     Zip Code: <p style="display:inline" id="ZipCode"></p><br>
     <input type="text" name="ZipCode"  size="5" onkeypress="return CheckNumber(event)"><br>
     Contact Phone Number: <p style="display:inline" id="Phone"></p><p style="display:inline" id="Area"></p><br> 
-    <input type="text" name="Area" placeholder="###" size="2" onkeypress="return CheckNumber(event)">
-    - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="7" onkeypress="return CheckNumber(event)"><br>
+    <input type="text" name="Area" placeholder="###" size="3" onkeypress="return CheckNumber(event)">
+    - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="8" onkeypress="return CheckNumber(event)"><br>
     Description: <p style="display:inline" id="Description"></p><br>
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 

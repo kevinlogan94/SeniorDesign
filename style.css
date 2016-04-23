@@ -313,3 +313,9 @@ select {
   color: #4c4c4c;
   margin:0;
 }
+
+body, html {
+	 min-width: 950px;
+
+}
+

@@ -179,7 +179,7 @@ Postconditions: Page transition to their new dashboard. Account information inpu
     <div class="rows">
        <label id="icon"><i class="icon-phone"></i></label>
         <input type="text" name="area" placeholder="###" size="3" onkeypress="return CheckNumber(event)">
-    - <input type="text" id="phoneshift" name="phone" placeholder="#######"size="7" onkeypress="return CheckNumber(event)"><br>
+    - <input type="text" id="phoneshift" name="phone" placeholder="#######"size="8" onkeypress="return CheckNumber(event)"><br>
     </div>
     <div class="rows">
        <p id="area"></p>

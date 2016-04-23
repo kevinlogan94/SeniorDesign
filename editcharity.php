@@ -310,9 +310,9 @@ else {
     <input type="text" name="ZipCode"  size="5" value="<?php echo $charity['zip_code'];?>" 
 		onkeypress="return CheckNumber(event)"><br>
     Contact Phone Number: <p style="display:inline" id="Phone"></p><p style="display:inline" id="Area"></p><br> 
-    <input type="text" name="Area" placeholder="###" size="2" value="<?php echo $charity['phone_area'];?>" 
+    <input type="text" name="Area" placeholder="###" size="3" value="<?php echo $charity['phone_area'];?>" 
 		onkeypress="return CheckNumber(event)">
-    - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="7" 
+    - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="8" 
 		value="<?php echo $charity['phone_main'];?>" onkeypress="return CheckNumber(event)"><br>
     Description: <p style="display:inline" id="Description"></p><br>
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"><?php echo $charity['charity_description'];?></textarea><br><br>
