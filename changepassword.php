@@ -86,7 +86,7 @@ else { //user isnt logged in so return to login page
     }
  ?>
  <form name="myform" action="updatepassword.php" method="post" onsubmit="return validateForm()">
-  <fieldset align="center">
+  <fieldset id="shift">
   <p id="formerror"></p>
   <hr>
     <label id="icon"><i class="icon-key"></i></label>  
