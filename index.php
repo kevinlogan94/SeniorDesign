@@ -18,6 +18,18 @@ Postconditions: Transition to the Search Results page.
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
   $("#header").load("header.php"); });
+   /*
+        CheckNumber function
+        Purpose: Allow users to only input numbers into the zip code input.
+        Parameters: event - What you input into an input. Ex: hitting the "L" key.
+        Return:True if you enter backspace or a number, otherwise false.
+    */
+    function CheckNumber(event){
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+     return false;
+    return true;
+    }
 
   /*
         validateForm function
@@ -71,7 +83,7 @@ Postconditions: Transition to the Search Results page.
 <form name="myform" action="results.php" method="get" onsubmit="return validateForm()">
     <div class="vert"><div>
     Zip Code<br>
-    <input type="text" name="ZipCode" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    <input type="text" name="ZipCode" size="5" onkeypress="return CheckNumber(event)"><br>
     <p id="ZipCode"></p></div>
 <div>
     Distance<br>

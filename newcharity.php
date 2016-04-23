@@ -51,6 +51,19 @@ $data = mysql_query("SELECT * FROM Tag");
  $(function(){
    $("#header").load("header.php"); });
     /*
+        CheckNumber function
+        Purpose: Allow users to only input numbers into the phone number and zip code input.
+        Parameters: event - What you input into an input. Ex: hitting the "L" key.
+        Return:True if you enter backspace or a number, otherwise false.
+    */
+    function CheckNumber(event){
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+     return false;
+    return true;
+    }
+
+    /*
 	validateForm function
 	Purpose: Allow a user to submit their information or not based on whether the information is filled 
 			out correctly. If not they will be notified on the screen what needs to be filled out.
@@ -262,10 +275,10 @@ $data = mysql_query("SELECT * FROM Tag");
 	<option value="WY">Wyoming</option>
     </select><br>
     Zip Code: <p style="display:inline" id="ZipCode"></p><br>
-    <input type="text" name="ZipCode"  size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    <input type="text" name="ZipCode"  size="5" onkeypress="return CheckNumber(event)"><br>
     Contact Phone Number: <p style="display:inline" id="Phone"></p><p style="display:inline" id="Area"></p><br> 
-    <input type="text" name="Area" placeholder="###" size="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-    - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+    <input type="text" name="Area" placeholder="###" size="2" onkeypress="return CheckNumber(event)">
+    - <input type="text" id="phoneshift" name="Phone" placeholder="#######"size="7" onkeypress="return CheckNumber(event)"><br>
     Description: <p style="display:inline" id="Description"></p><br>
     <textarea id="dropdowntextarea" name="Description" cols="100" rows="5" maxlength="500"></textarea><br><br>
 

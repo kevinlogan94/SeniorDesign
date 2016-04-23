@@ -90,7 +90,7 @@ if ($username) {
     }
 ?>
  <form name = "myform" action="access.php" method="post" onsubmit="return validateForm()">
-  <fieldset align="center">
+  <fieldset id="shift">
   <p id="formerror"></p>
   <hr>
   <label id="icon" for="name"><i class="icon-user"></i></label>

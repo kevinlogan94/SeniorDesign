@@ -20,6 +20,19 @@ Postconditions: Page transition to their new dashboard. Account information inpu
   <script>$(function(){
   $("#header").load("header.php"); });
 
+  /*
+        CheckNumber function
+        Purpose: Allow users to only input numbers into the phone number input.
+        Parameters: event - What you input into an input. Ex: hitting the "L" key.
+        Return:True if you enter backspace or a number, otherwise false.
+  */
+  function CheckNumber(event){
+  var charCode = (event.which) ? event.which : event.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57))
+   return false;
+  return true;
+  }
+
    /*
         validateForm function
         Purpose: Allow a user to submit their information or not based on whether the information is filled 
@@ -128,9 +141,6 @@ Postconditions: Page transition to their new dashboard. Account information inpu
        <p id="lastname"></p>
     </div>
      <br>
-   
-    <!-- <label>Account Information</label>
-     <hr>--> 
     <div class="rows">
        <label id="icon"><i class="icon-user"></i></label>
        <input type="text" name="username" placeholder="Username">
@@ -168,8 +178,8 @@ Postconditions: Page transition to their new dashboard. Account information inpu
     <br>
     <div class="rows">
        <label id="icon"><i class="icon-phone"></i></label>
-        <input type="text" name="area" placeholder="###" size="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-    - <input type="text" id="phoneshift" name="phone" placeholder="#######"size="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br>
+        <input type="text" name="area" placeholder="###" size="3" onkeypress="return CheckNumber(event)">
+    - <input type="text" id="phoneshift" name="phone" placeholder="#######"size="7" onkeypress="return CheckNumber(event)"><br>
     </div>
     <div class="rows">
        <p id="area"></p>

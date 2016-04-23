@@ -280,7 +280,7 @@ fieldset {
   padding: 5px;
 }
 
-/*Used on register.php to shift everything to the center*/
+/*Used on register.php and login.php to shift everything to the center*/
 #shift {
 	display:block;
 	margin: 0 auto;
