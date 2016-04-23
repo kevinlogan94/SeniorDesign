@@ -58,7 +58,7 @@ Postconditions: User should receive an email including their password.
 ?>
 <!--Set up form form to receive email for password recovery-->
 <form name="myform" action="processrecovery.php" method="post" onsubmit="return validateForm()">
-  <fieldset align="center">
+  <fieldset id="shift">
    <p id="formerror"></p>
    <hr>
    <label id="icon" for="name"><i class="icon-user"></i></label>
