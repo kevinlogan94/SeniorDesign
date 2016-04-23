@@ -54,8 +54,12 @@ if ($username) {
     var x = document.forms["myform"]["username"].value;
     var y = document.forms["myform"]["password"].value;
     if (x == null || x == "" || y == null || y == "") {
-        alert("Please enter a Username and Password.");
-        return false;
+         document.getElementById("formerror").innerHTML = "Please enter a Username and Password.";  
+         document.getElementById("formerror").style.color = "red";
+	 return false;
+    }
+    else {
+   	 document.getElementById("formerror").innerHTML = "";  
     }
    }
    </script>
@@ -87,6 +91,7 @@ if ($username) {
 ?>
  <form name = "myform" action="access.php" method="post" onsubmit="return validateForm()">
   <fieldset align="center">
+  <p id="formerror"></p>
   <hr>
   <label id="icon" for="name"><i class="icon-user"></i></label>
   <input type="text" name="username" placeholder="Username"><br>
@@ -94,6 +99,7 @@ if ($username) {
   <input type="password" name="password" placeholder="Password"><br><br>
   <input type="submit" value="Submit"><br>
     <!--Send user to password recovery page if they forgot password-->
+    <a href="register.php">Create an account</a><br><br><br>
     <a href= "passrecover.php">I forgot my password</a>
   </fieldset>
  </form>
