@@ -35,7 +35,7 @@ if (!$db_handle) {
 }
 
 $db_found = mysql_select_db($database, $db_handle);
-if ($db_found) {i
+if ($db_found) {
     // finds the zip code data for the specified zip code
     $data = mysql_query("SELECT * FROM zips WHERE zip_code = $ZIP");
     if($row = mysql_fetch_assoc($data)) { // if there is a match
