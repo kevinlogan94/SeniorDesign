@@ -19,6 +19,7 @@ Postconditions: CSS Styling on all the pages.
 	width:22%;
 	float:left;
 	padding:10px 2%;
+	max-width:150px;
 }
 
 .result div {
@@ -282,8 +283,9 @@ nav {
 
 .result div.btn {
 	width:45%;
-	border:2px solid #2F6FF9;
-	color:#2F6FF9;
+	border:2px solid #4c4c4c;
+	border-radius:5px;
+	color:#4c4c4c;
 	text-align:center;
 	margin:0 2%;
 	padding:0;
@@ -297,8 +299,28 @@ nav {
 .result div.btn a {
 	display:block;
 	text-decoration:none;
-	color:#2F6FF9;
+	color:#4c4c4c;
 	padding:10px 0;
+}
+
+nav p {
+	border:2px solid #4c4c4c;
+        border-radius:5px;
+        color:#4c4c4c;
+        text-align:center;
+        padding:0;
+}
+
+nav p a:hover {
+        background-color:#ff5882;
+        color:#fff;
+}
+
+nav p a {
+        display:block;
+        text-decoration:none;
+        color:#4c4c4c;
+        padding:5px 0;
 }
 
 /*Specific Styling for inputs on all pages*/

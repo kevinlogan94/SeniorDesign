@@ -73,8 +73,13 @@ if ($db_found) {
     }
     // find all charities that are owned by the user
     $result = mysql_query("SELECT * FROM Charities WHERE (charity_owner = '$username')");
-
-    echo nl2br("<div class=\"dashcontainer\">");
+    ?>
+<nav>
+<p><a href="changepassword.php">Change Password</a></p>
+<p><a href="newcharity.php">Create New Event</a></p>
+</nav>
+<?php
+    echo nl2br("<div class=\"afternav\">");
     // for each row in the result, print the information to the screen
     while ($row = mysql_fetch_object($result)) {
         echo nl2br("<div class=\"result\">");
@@ -119,8 +124,5 @@ else {
 }
 
 ?>
-<p><a href="changepassword.php">Change Password</a></p> 
-<p><a href="newcharity.php">Create new event</a></p>
-
 </body>
 </html>
