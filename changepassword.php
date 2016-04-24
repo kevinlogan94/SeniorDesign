@@ -33,7 +33,7 @@ else { //user isnt logged in so return to login page
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
   <title>Change Password</title>
   <!--MOBILE-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
   <!--REQUIRED FOR HEADER-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){

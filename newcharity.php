@@ -41,7 +41,7 @@ $data = mysql_query("SELECT * FROM Tag");
  <link rel="stylesheet" type="text/css" href="style.css">
  <title>Register Charity/Event/Program</title>
  <!--MOBILE-->
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
  <link rel="stylesheet" type="text/css" href="style.css">
  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
  <!--REQUIRED FOR HEADER-->

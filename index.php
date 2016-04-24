@@ -11,7 +11,7 @@ Postconditions: Transition to the Search Results page.
 <head>
   <title>Landing Page</title>
   <!--MOBILE-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
   <!--REQUIRED FOR HEADER-->
@@ -87,7 +87,7 @@ Postconditions: Transition to the Search Results page.
     <p id="ZipCode"></p></div>
 <div>
     Distance<br>
-    <select name="formDistance">
+    <select id="soflow" name="formDistance">
       <option value="1">1 mile</option>
       <option value="5">5 miles</option>
       <option value="10">10 miles</option>
@@ -104,7 +104,7 @@ Postconditions: Transition to the Search Results page.
 <div class="landing bottom">
     Search Tags:<p style="display:inline" id="check"></p><br>
     <?php include 'listtags.php';?>
-    <input type="submit" value="Submit"><br><br>
+    <div id="submitcenter"><input type="submit" value="Submit"></div><br><br>
 </form>
 </div>
 </body>

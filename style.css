@@ -32,6 +32,17 @@ Postconditions: CSS Styling on all the pages.
 	width:70%;
 }
 
+.addressp {
+	text-transform:uppercase;
+	font-size:11pt;
+}
+
+.phonep {
+	text-transform:uppercase;
+	font-size:11pt;
+	
+}
+
 /*Above the fold for landing page*/
 div.vert {
 	text-align:center;
@@ -92,23 +103,33 @@ div.vert select {
 	transform: rotate(135deg);
 }
 
+select#soflow {
+   -webkit-appearance: button;
+   -webkit-border-radius: 5px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image:url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#fff, #FFF 40%, #E5E5E5);
+   background-position: 97% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   overflow: hidden;
+   padding: 12px 10px;
+   margin-top:12px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 100%;
+}
+
 /*Checkbox Styling*/
 .checkdiv {
 	float:left;
 	width:25%;
 	margin-bottom:20px;
 	border-radius:5px;
-}
-
-/*This is supposed to help with the default checkbox after-clicked-box situation but it
-is not working yet for who knows what reason*/
-.checkbox-custom:active,
-.checkbox-custom:focus,
-.checkbox-custom:focus:active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 .checkdiv:hover {
@@ -178,13 +199,19 @@ div.landing.bottom {
 
 /*Submit button styling for each page.*/
 input[type="submit"] {
-    padding:5px 15px; 
+    padding:10px 15px; 
     background:#ccc; 
     border:0 none;
     cursor:pointer;
     border-radius: 5px;
     margin-top:20px;
     margin-bottom: 20px; 
+}
+
+div#submitcenter {
+	width:100%;
+	display:inline-block;
+	text-align:center;
 }
 
 /*Main header stylings for each page.*/
@@ -203,6 +230,7 @@ h2 {
   text-transform:uppercase;
   margin:0;
   width:100%;
+  color:#000;
 }
 
 /*Styling for bar under each h1 on newcharity, login.php, register.php, and passrecover.php*/
@@ -359,9 +387,9 @@ select {
   color: #4c4c4c;
   margin:0;
 }
-/*This does NOT work for desktop*/
-/*body, html {
+
+body, html {
 	 min-width: 1100px;
 
-}*/
+}
 
