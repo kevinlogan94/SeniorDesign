@@ -35,12 +35,35 @@ Postconditions: CSS Styling on all the pages.
 .addressp {
 	text-transform:uppercase;
 	font-size:11pt;
+	color:#969696;
+	font-weight:600;
+	margin-bottom:0;
 }
 
 .phonep {
 	text-transform:uppercase;
 	font-size:11pt;
-	
+	color:#969696;
+	font-weight:600;
+	margin-top:0;
+}
+
+.descripp {
+	font-size:11pt;
+	color:#000;
+	font-weight:600;
+}
+
+.tagsp {
+        font-size:11pt;
+        color:#969696;
+        font-weight:600;
+}
+
+.datep {
+	font-size:11pt;
+	color:#FC5B84;
+	font-weight:600;
 }
 
 /*Above the fold for landing page*/

@@ -139,11 +139,11 @@ while ($row = mysql_fetch_object($results)) { // for each result, display the in
 	echo nl2br("<div><h2>$row->charity_name</h2>");
 	echo nl2br("<p class=\"addressp\">$row->street_address, $row->city_name, $row->state_abrev $row->zip_code</p>");
 	echo nl2br("<p class=\"phonep\">$row->phone_area-$row->phone_main</p>");
-	echo nl2br("<p>$row->charity_description</p>");
+	echo nl2br("<p class=\"descripp\">$row->charity_description</p>");
         // gets all tags linked to the charity
 	$tags = mysql_query("SELECT t.* FROM Tag t INNER JOIN Tag2Charity t2c ON t.tag_id = t2c.tag_id 
                              WHERE (t2c.charity_id = $row->charity_id)");
-        echo nl2br("<p>Tags: ");
+        echo nl2br("<p class=\"tagsp\">Tags: ");
 	$first = true;
 	while ($tag = mysql_fetch_assoc($tags)) {
 		if ($first) {
@@ -156,7 +156,7 @@ while ($row = mysql_fetch_object($results)) { // for each result, display the in
 	mysql_free_result($tags);
 	echo nl2br("</p>");
 	if ($row->start_date != NULL && $row->start_date != "0000-00-00") {
-		echo nl2br("<p>Date: $row->start_date</p>");
+		echo nl2br("<p class=\"datep\">Date: $row->start_date</p>");
 	}
 	echo nl2br("</div></div>"); 
 }
