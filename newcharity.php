@@ -286,7 +286,7 @@ $data = mysql_query("SELECT * FROM Tag");
     <?php include 'listtags.php';?>
 
     <br>
-    <input type="submit" value="Submit">
+    <div class="submitcenter"><input type="submit" value="Submit"></div>
   </fieldset>
 </div>
 </form>
