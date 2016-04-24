@@ -13,6 +13,7 @@ Postconditions: CSS Styling on all the pages.
 	background-color:#ECF0F1;
 	padding:10px 2%;
 	overflow:hidden;
+	border-radius:5px;
 }
 
 .result img {
@@ -232,7 +233,7 @@ input[type="submit"] {
     margin-bottom: 20px; 
 }
 
-div#submitcenter {
+div.submitcenter {
 	width:100%;
 	display:inline-block;
 	text-align:center;
@@ -405,8 +406,7 @@ fieldset {
 /*Box surrounding the form on newcharity.php */
 .newcharitybox {
   margin: 20px auto;
-  width:  1050px;
-  height: 1400px;
+  width:  1056px;
   border-radius: 8px/7px;
   background-color: #ebebeb;
   box-shadow: 1px 2px 5px rgba(0,0,0,.31);

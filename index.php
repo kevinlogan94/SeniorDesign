@@ -104,7 +104,7 @@ Postconditions: Transition to the Search Results page.
 <div class="landing bottom">
     Search Tags:<p style="display:inline" id="check"></p><br>
     <?php include 'listtags.php';?>
-    <div id="submitcenter"><input type="submit" value="Submit"></div><br><br>
+    <div class="submitcenter"><input type="submit" value="Submit"></div><br><br>
 </form>
 </div>
 </body>

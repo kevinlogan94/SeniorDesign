@@ -342,7 +342,7 @@ else {
 ?>
     <input type="hidden" name="id" value=<?php echo $id?>>
     <br>
-    <input type="submit" value="Submit">
+    <div class="submitcenter"><input type="submit" value="Submit"></div>
   </fieldset>
 </div>
 </form>
