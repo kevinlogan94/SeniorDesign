@@ -96,6 +96,8 @@ Postconditions: Transition to the Search Results page.
     </select><br>
 </div>
 </div>
+<div id="scrolldown"><p>SCROLL DOWN</p>
+<span class="chevron bottom"></span></div>
 <!--<img src="scrolldown.png" />-->
 </div>
 
