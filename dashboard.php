@@ -102,7 +102,10 @@ if ($db_found) {
         }
         mysql_free_result($tags);
         echo nl2br("</p>");
-        echo nl2br("</div>");
+        if ($row->start_date != NULL || $row->start_date != "0000-00-00") {
+		echo nl2br("<p>Date: $row->start_date</p>");
+	}
+	echo nl2br("</div>");
 	echo nl2br("<div class=\"btn\"><a href=\"editcharity.php?id=$row->charity_id\">Edit</a></div>");
 	echo nl2br("<div class=\"btn\"><a href=\"deletecharity.php?id=$row->charity_id\">Delete</a></div>");
 	echo nl2br("</div>");

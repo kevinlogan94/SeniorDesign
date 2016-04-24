@@ -155,6 +155,9 @@ while ($row = mysql_fetch_object($results)) { // for each result, display the in
 	}
 	mysql_free_result($tags);
 	echo nl2br("</p>");
+	if ($row->start_date != NULL || $row->start_date != "0000-00-00") {
+		echo nl2br("<p>Date: $row->start_date</p>");
+	}
 	echo nl2br("</div></div>"); 
 }
 echo nl2br("</div></div>");
