@@ -280,6 +280,27 @@ nav {
 	max-width:600px;
 }
 
+.result div.btn {
+	width:45%;
+	border:2px solid #2F6FF9;
+	color:#2F6FF9;
+	text-align:center;
+	margin:0 2%;
+	padding:0;
+}
+
+.result div.btn a:hover {
+	background-color:#ff5882;
+	color:#fff;
+}
+
+.result div.btn a {
+	display:block;
+	text-decoration:none;
+	color:#2F6FF9;
+	padding:10px 0;
+}
+
 /*Specific Styling for inputs on all pages*/
 input[type=text],input[type=password]{ 
   height: 39px;
