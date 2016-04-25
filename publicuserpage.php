@@ -1,3 +1,11 @@
+<!--
+Prolog: publicuserpage.php
+Purpose: Page that lists the charities, events, and programs of a single registered user for public viewing
+Preconditions: No input required. Finds user's id and gathers the charities, events, and programs owned by that user
+Postconditions: Displays all charities, events, and programs owned by the user
+Results are sorted by id
+-->
+
 <?php
 include 'databaselogin.php';
 
