@@ -80,6 +80,7 @@ Postconditions: Transition to the Search Results page.
 <div class="landing">
 <div id="header"></div>
 <!--Set up form for search results-->
+<p id="opener">Welcome to HelpFinder.us</p>
 <form name="myform" action="results.php" method="get" onsubmit="return validateForm()">
     <div class="vert"><div>
     Zip Code<br>
