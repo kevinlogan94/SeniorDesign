@@ -33,6 +33,8 @@ else {
   <!--MOBILE-->
   <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
   <!--REQUIRED FOR HEADER-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>$(function(){
   $("#header").load("header.php"); });
@@ -47,7 +49,8 @@ else {
 <!-- List Event Information -->
 
 <?php
-    echo nl2br("<div class=\"afternav\">");
+    echo nl2br("<h1>Charities/Events/Programs by ".$user['username']."</h1>");
+    echo nl2br("<div class=\"publicuser\">");
     // for each row in the result, print the information to the screen
     while ($row = mysql_fetch_object($charities)) {
         echo nl2br("<div class=\"result\">");
@@ -80,8 +83,6 @@ else {
                 echo nl2br("<p class=\"classp\">Date: $row->start_date</p>");
         }
         echo nl2br("</div>");
-        echo nl2br("<div class=\"btn\"><a href=\"editcharity.php?id=$row->charity_id\">Edit</a></div>");
-        echo nl2br("<div class=\"btn\"><a href=\"deletecharity.php?id=$row->charity_id\">Delete</a></div>");
         echo nl2br("</div>");
     }
     echo nl2br("</div>");

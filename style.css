@@ -6,6 +6,11 @@ Preconditions: Included on all pages of the website.
 Postconditions: CSS Styling on all the pages.
 */
 
+/*Public User Page*/
+.publicuser {
+	width:80%;
+	margin:0 auto;
+}
 
 /*Results Page */
 .result {
