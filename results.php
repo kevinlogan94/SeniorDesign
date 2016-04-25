@@ -9,7 +9,7 @@ Results are sorted by number of matched tags.
 <html>
 <head>
 <!--MOBILE-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 <link rel="stylesheet" type="text/css" href="style.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 <!--REQUIRED FOR HEADER-->
@@ -158,7 +158,8 @@ while ($row = mysql_fetch_object($results)) { // for each result, display the in
 	if ($row->start_date != NULL && $row->start_date != "0000-00-00") {
 		echo nl2br("<p class=\"datep\">Date: $row->start_date</p>");
 	}
-	echo nl2br("</div></div>"); 
+	echo nl2br("<p class=\"descripp\"><a href=\"publicuserpage.php?id=$row->charity_owner\">By: $row->charity_owner</a></p>");
+	echo nl2br("</div></div>");
 }
 echo nl2br("</div></div>");
 mysql_free_result($data);
