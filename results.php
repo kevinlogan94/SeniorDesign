@@ -47,55 +47,55 @@ if ($db_found) {
         // 1 degree of longitude is ~= cos(latitude)*69, so range of longitude is +- distance/(|cos(lat)*69|) 
         $lon_upper = $orig_lon + ($distance/abs(cos(deg2rad($orig_lat))*69));
         $lon_lower = $orig_lon - ($distance/abs(cos(deg2rad($orig_lat))*69));
-}
+    }
 
 //start of building query. Finds a charity and joins it with links associated with charity
-$query = "SELECT c.* FROM Charities c INNER JOIN Tag2Charity t2c ON c.charity_id = t2c.charity_id WHERE (";
-$first = True;
+    $query = "SELECT c.* FROM Charities c INNER JOIN Tag2Charity t2c ON c.charity_id = t2c.charity_id WHERE (";
+    $first = True;
 
 // gets list of tags
-$data = mysql_query("SELECT * FROM Tag");
-while($row = mysql_fetch_assoc($data)) // for each tag
-{
-    if(isset($_GET[$row['tag_name']])) { // if tag was checked
-        if (!$first) {$query .= " OR ";}
+    $data = mysql_query("SELECT * FROM Tag");
+    while($row = mysql_fetch_assoc($data)) // for each tag
+    {
+        if(isset($_GET[$row['tag_name']])) { // if tag was checked
+            if (!$first) {$query .= " OR ";}
         // add to query that there must be a link between charity and the tag
-        $query .= "(t2c.tag_id = ".$row['tag_id'].")"; 
-        $first = False;
-    } 
-}
-$first = True;
+            $query .= "(t2c.tag_id = ".$row['tag_id'].")"; 
+            $first = False;
+        } 
+    }
+    $first = True;
 
 // if there is a filter by a type of charity, add a requirement that results must be one of the filtered types
-if(isset($_GET['charity_filt'])) {
+    if(isset($_GET['charity_filt'])) {
 	$query .= ") AND (c.charity_type=1";
 	$first = False;
-}
-if(isset($_GET['program_filt'])) {
+    }    
+    if(isset($_GET['program_filt'])) {
 	if($first) {
 		$query .= ") AND (c.charity_type=2";
 		$first = False;
 	} else {
 		$query .= " OR c.charity_type=2";
 	}	
-}
-if(isset($_GET['event_filt'])) {
+    }
+    if(isset($_GET['event_filt'])) {
         if($first) {
                 $query .= ") AND (c.charity_type=3";
                 $first = False;
         } else {
                 $query .= " OR c.charity_type=3";
         }
-}
+    }
 
 // finally add that lat and lon must be within the calculated range. Charities that match more than
 // one tag are listed multiple times, so group the duplicates and sort by number of times it appeared
 // in the list
-$query .= ") AND (c.lat BETWEEN $lat_lower AND $lat_upper) AND (c.lon BETWEEN $lon_lower AND $lon_upper) 
+    $query .= ") AND (c.lat BETWEEN $lat_lower AND $lat_upper) AND (c.lon BETWEEN $lon_lower AND $lon_upper) 
            GROUP BY c.charity_id ORDER BY count(*) DESC";
 
 // get the results by making the query
-$results = mysql_query($query);
+    $results = mysql_query($query);
 ?>
 <h1>Your Results</h1>
 <div class="resultsdiv">
@@ -158,7 +158,10 @@ while ($row = mysql_fetch_object($results)) { // for each result, display the in
 	if ($row->start_date != NULL && $row->start_date != "0000-00-00") {
 		echo nl2br("<p class=\"datep\">Date: $row->start_date</p>");
 	}
-	echo nl2br("<p class=\"descripp\"><a href=\"publicuserpage.php?id=$row->charity_owner\">By: $row->charity_owner</a></p>");
+
+	$owner = mysql_query("SELECT * FROM Logins WHERE username='$row->charity_owner'");
+	$owner = mysql_fetch_assoc($owner);
+	echo nl2br("<p class=\"descripp\"><a href=\"publicuserpage.php?id=".$owner['userid']."\">By: $row->charity_owner</a></p>");
 	echo nl2br("</div></div>");
 }
 echo nl2br("</div></div>");

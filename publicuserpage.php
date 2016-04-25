@@ -5,39 +5,23 @@ $id = $_GET['id'];
 
 $db_handle = mysql_connect($server, $db_username, $db_password);
 if (!$db_handle) {
-die(mysql_error());
+    die(mysql_error());
 }
-echo nl2br("Connected successfully\n");
 $db_found = mysql_select_db($database, $db_handle);
 if ($db_found) {
-$user = mysql_query("SELECT * FROM Logins WHERE (userid = '$id')");
-$charities = NULL;
-if ($user && mysql_num_rows($user) > 0)
+    $user = mysql_query("SELECT * FROM Logins WHERE (userid = '$id')");
+    $charities = NULL;
+    $no_user = True;
+    if ($user && mysql_num_rows($user) > 0)
     {
-        print_r(mysql_fetch_assoc($user));
-        echo "<br>";
-        $charities = mysql_query("SELECT * FROM Charities WHERE charity_owner = '$id'");
-        if ($charities && mysql_num_rows($charities) > 0)
-        {
-            while($row = mysql_fetch_assoc($charities))
-            {
-   		print_r($row);
-   		echo nl2br("\n");
-	    }
-        }
-        else
-        {
-            echo nl2br("No Charities to Display\n");
-        }       
-    }
-else
-    {
-        echo nl2br("User Does Not Exist\n");
+        $user = mysql_fetch_assoc($user);
+        $charities = mysql_query("SELECT * FROM Charities WHERE charity_owner = '".$user['username']."'");
+	$no_user = False;
     }
 }
 else {
-print nl2br("Database NOT Found.\n");
-mysql_close($db_handle);
+    print nl2br("Database NOT Found.\n");
+    mysql_close($db_handle);
 }
 
 ?>
@@ -65,7 +49,7 @@ mysql_close($db_handle);
 <?php
     echo nl2br("<div class=\"afternav\">");
     // for each row in the result, print the information to the screen
-    while ($row = mysql_fetch_object($result)) {
+    while ($row = mysql_fetch_object($charities)) {
         echo nl2br("<div class=\"result\">");
         if ($row->charity_type =="1"){
                 echo nl2br("<img src=\"charity.png\"/>");
@@ -101,11 +85,6 @@ mysql_close($db_handle);
         echo nl2br("</div>");
     }
     echo nl2br("</div>");
-}
-else {
-    print nl2br("Database NOT Found.\n");
-    mysql_close($db_handle);
-}
 
 ?>
 
