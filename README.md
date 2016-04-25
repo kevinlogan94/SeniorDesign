@@ -64,8 +64,8 @@ Set up folder
 6.   Type "chmod 755 HTML"
 
 Set up Repository
-cd into your HTML file.
-Create a clone from https://github.com/kevinlogan94/SeniorDesign
+7. cd into your HTML file.
+8. Create a clone from https://github.com/kevinlogan94/SeniorDesign
 	Type "git clone https://github.com/kevinlogan94/SeniorDesign.git”
 9.   In your HTML folder do "chmod 755 SeniorDesign"
 10. Then in the SeniorDesign Folder do "chmod 644 *.php”, "chmod 644 *.css”, 	"chmod 644 *.png”, and "chmod 644 *.jpg”
