@@ -61,58 +61,6 @@ mysql_close($db_handle);
 
 <!-- List Event Title -->
 <!-- List Event Information -->
-Last login: Sun Apr 24 19:35:06 on ttys001
-Mirandas-MacBook-Pro:~ mandycox$ ssh mdco232@pen.cs.uky.edu
-mdco232@pen.cs.uky.edu's password: 
------------------------------
-University of Kentucky Computer Science Facility
-penstemon.cs.engr.uky.edu Linux 3.13.0-77-generic x86_64 (DMB 005)
-
-This computer is for authorized users only.  Use of this computer
-expresses consent to having all activities monitored by CS personnel to
-maintain security and is governed by the University policy governing
-access to and use of UK computing resources.
-
-
-2015-08-01 - Matlab 2015b installed on all machines.
-
-	paul, 1 Aug 2015
------------------------------
-Last login: Sun Apr 24 19:33:08 2016 from 10.20.193.228
-penstemon:~> cd HTML/SeniorDesign
-penstemon:~/HTML/SeniorDesign> ls
-access.php	    event.php	     mainbg.jpg		  README.md
-changepassword.php  event.png	     newcharity.php	  register.php
-charity.png	    header.php	     passrecover.php	  results.php
-dashboard.php	    index.php	     processcharity.php   scrolldown.png
-databaselogin.php   landingpage.php  processrecovery.php  style.css
-deletecharity.php   listtags.php     processreg.php	  updatecharity.php
-dump.sql	    login.php	     program.png	  updatepassword.php
-editcharity.php     logout.php	     publicuserpage.php
-penstemon:~/HTML/SeniorDesign> vim results.php
-penstemon:~/HTML/SeniorDesign> vim results.php
-penstemon:~/HTML/SeniorDesign> vim publicuserpage.php
-penstemon:~/HTML/SeniorDesign> vim results.php
-penstemon:~/HTML/SeniorDesign> vim results.php
-penstemon:~/HTML/SeniorDesign> vim publicuserpage.php
-penstemon:~/HTML/SeniorDesign> vim dashboard.php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
     echo nl2br("<div class=\"afternav\">");
