@@ -57,11 +57,13 @@ else {
 <!-- List Event Information -->
 
 <?php
+    $flag=false;
     echo nl2br("<h1>Charities/Events/Programs by ".$user['username']."</h1>");
     echo nl2br("<div class=\"publicuser\">");
     // for each row in the result, print the information to the screen
     while ($row = mysql_fetch_object($charities)) {
-        echo nl2br("<div class=\"result\">");
+        $flag=true;
+	echo nl2br("<div class=\"result\">");
         if ($row->charity_type =="1"){
                 echo nl2br("<img src=\"charity.png\"/>");
         } else if ($row->charity_type =="2") {
@@ -93,6 +95,9 @@ else {
         echo nl2br("</div>");
         echo nl2br("</div>");
     }
+	if (!$flag) {
+        	echo nl2br("<p style=\"text-align:center;\">No results found.</p>");
+	}
     echo nl2br("</div>");
 
 ?>

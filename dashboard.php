@@ -79,10 +79,12 @@ if ($db_found) {
 <p><a href="newcharity.php">Create New Event</a></p>
 </nav>
 <?php
+    $flag = false;
     echo nl2br("<div class=\"afternav\">");
     // for each row in the result, print the information to the screen
     while ($row = mysql_fetch_object($result)) {
-        echo nl2br("<div class=\"result\">");
+        $flag=true;
+	echo nl2br("<div class=\"result\">");
         if ($row->charity_type =="1"){
                 echo nl2br("<img src=\"charity.png\"/>");
         } else if ($row->charity_type =="2") {
@@ -116,6 +118,9 @@ if ($db_found) {
 	echo nl2br("<div class=\"btn\"><a href=\"deletecharity.php?id=$row->charity_id\">Delete</a></div>");
 	echo nl2br("</div>");
     }
+    if (!$flag) {
+        echo nl2br("<p style=\"text-align:center;margin-right:200px;\">No results found.</p>");
+}
     echo nl2br("</div>");
 }
 else {

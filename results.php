@@ -127,7 +127,9 @@ while($row = mysql_fetch_assoc($data)) // for each tag
 <?php
 // prints results 
 echo nl2br("<div class=\"afternav\">");
+$flag = false;
 while ($row = mysql_fetch_object($results)) { // for each result, display the information
+	$flag = true;
 	echo nl2br("<div class=\"result\">");
 	if ($row->charity_type =="1"){
 		echo nl2br("<img src=\"charity.png\"/>");
@@ -163,6 +165,9 @@ while ($row = mysql_fetch_object($results)) { // for each result, display the in
 	$owner = mysql_fetch_assoc($owner);
 	echo nl2br("<p class=\"descripp\"><a href=\"publicuserpage.php?id=".$owner['userid']."\">By: $row->charity_owner</a></p>");
 	echo nl2br("</div></div>");
+}
+if (!$flag) {
+	echo nl2br("<p style=\"text-align:center;margin-right:200px;\">No results found.</p>");
 }
 echo nl2br("</div></div>");
 mysql_free_result($data);
