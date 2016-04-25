@@ -96,7 +96,7 @@ else {
         echo nl2br("</div>");
     }
 	if (!$flag) {
-        	echo nl2br("<p style=\"text-align:center;\">No results found.</p>");
+        	echo nl2br("<p style=\"text-align:center;\">This user has not created any charities.</p>");
 	}
     echo nl2br("</div>");
 

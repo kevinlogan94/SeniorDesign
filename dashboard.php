@@ -119,8 +119,8 @@ if ($db_found) {
 	echo nl2br("</div>");
     }
     if (!$flag) {
-        echo nl2br("<p style=\"text-align:center;margin-right:200px;\">No results found.</p>");
-}
+        echo nl2br("<p style=\"text-align:center;margin-right:200px;\">You have not created any charities yet.</p>");
+    }
     echo nl2br("</div>");
 }
 else {
