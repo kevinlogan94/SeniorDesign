@@ -83,10 +83,10 @@ Getting the code to work for your database
 16.  In that file, type/copy the following:
 
 <?php
-$db_username = "[userid]"
-$db_password = "[your mysql password]"
-$database = "[userid]"
-$server = "mysql"
+$db_username = "[userid]";
+$db_password = "[your mysql password]";
+$database = "[userid]";
+$server = "mysql";
 ?>
 
 17.  Remember not to add/push that file to the repository because it is personalized to you.
