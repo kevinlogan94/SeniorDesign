@@ -68,13 +68,13 @@ Set up Repository
 8. Create a clone from https://github.com/kevinlogan94/SeniorDesign
 	Type "git clone https://github.com/kevinlogan94/SeniorDesign.git”
 9.   In your HTML folder do "chmod 755 SeniorDesign"
-10. Then in the SeniorDesign Folder do "chmod 644 *.php”, "chmod 644 *.css”, 	"chmod 644 *.png”, and "chmod 644 *.jpg”
+10. Then in the SeniorDesign Folder do "chmod 644 *.php”, "chmod 644 *.css”, "chmod 644 *.png”, and "chmod 644 *.jpg”
 
 Setting up the database
 
 11.    cd into the SeniorDesign directory
 12.    Type "mysql -h mysql -p [youruserid] < dump.sql"
-13.    It will ask for a password, the default is "u" followed by the last 7 digits of your     		student id. 
+13.    It will ask for a password, the default is "u" followed by the last 7 digits of your student id.
 14.    Now you have the database.
 
 Getting the code to work for your database
