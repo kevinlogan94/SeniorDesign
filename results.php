@@ -35,6 +35,7 @@ if (!$db_handle) {
 }
 
 $db_found = mysql_select_db($database, $db_handle);
+$suicide=false;
 if ($db_found) {
     // finds the zip code data for the specified zip code
     $data = mysql_query("SELECT * FROM zips WHERE zip_code = $ZIP");
@@ -62,7 +63,10 @@ if ($db_found) {
         // add to query that there must be a link between charity and the tag
             $query .= "(t2c.tag_id = ".$row['tag_id'].")"; 
             $first = False;
-        } 
+        if($row['tag_name'] == "suicidal") {
+		$suicide=true;
+	}
+	} 
     }
     $first = True;
 
@@ -128,6 +132,9 @@ while($row = mysql_fetch_assoc($data)) // for each tag
 // prints results 
 echo nl2br("<div class=\"afternav\">");
 $flag = false;
+if($suicide) {
+	echo nl2br("<p style=\"color:red;margin-right:190px;font-size:20pt;text-align:center;\">SUICIDE HOTLINE: 1 (800) 273-8255</p>");
+}
 while ($row = mysql_fetch_object($results)) { // for each result, display the information
 	$flag = true;
 	echo nl2br("<div class=\"result\">");
