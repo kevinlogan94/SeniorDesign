@@ -1,9 +1,7 @@
-# SeniorDesign
+# Nonprofit Organization Search Website
 CS499 Senior Design
 
 Group 6
-
-Nonprofit Organization Search Website
 
 Files include:
 
