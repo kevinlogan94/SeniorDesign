@@ -3,7 +3,7 @@ CS499 Senior Design
 
 Group 6
 
-#Installation Guide:
+## Installation Guide:
 
 Note: Guide to install on the Multilab servers offered by the University of Kentucky
 
