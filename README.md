@@ -1,7 +1,10 @@
 # Nonprofit Organization Search Website
 CS499 Senior Design
 
-Group 6: Mandy Cox, Jordan Jorgensen, Kevin Logan
+Group 6: 
+* Mandy Cox 
+* Jordan Jorgensen
+* Kevin Logan
 
 ## Installation Guide:
 
